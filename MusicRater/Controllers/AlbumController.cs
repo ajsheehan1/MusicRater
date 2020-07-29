@@ -14,7 +14,7 @@ namespace MusicRater.Controllers
     {
         public IHttpActionResult Get()
         {
-            AlbumService albumService = CreateNoteService();
+            AlbumService albumService = CreateAlbumService();
             var notes = albumService.GetAlbums();
             return Ok(notes);
         }
@@ -23,14 +23,14 @@ namespace MusicRater.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateNoteService();
+            var service = CreateAlbumService();
 
             if (!service.CreateAlbum(album))
                 return InternalServerError();
 
             return Ok();
         }
-        private AlbumService CreateNoteService()
+        private AlbumService CreateAlbumService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var noteService = new AlbumService(userId);

@@ -25,3 +25,36 @@ C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater.
 C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater.Services\obj\Debug\MusicRater.Services.csproj.CopyComplete
 C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater.Services\obj\Debug\MusicRater.Services.dll
 C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater.Services\obj\Debug\MusicRater.Services.pdb
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Services.dll.config
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Services.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Services.pdb
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\EntityFramework.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\EntityFramework.SqlServer.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Newtonsoft.Json.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Owin.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.pdb
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.dll.config
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.pdb
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.dll.config
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\EntityFramework.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\EntityFramework.SqlServer.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\bin\Debug\Newtonsoft.Json.xml
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.csprojAssemblyReference.cache
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.csproj.CoreCompileInputs.cache
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.csproj.CopyComplete
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.dll
+E:\1150\Blue Badge\Group Projects\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.pdb

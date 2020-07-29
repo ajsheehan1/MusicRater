@@ -72,7 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumDetails.cs" />
+    <Compile Include="AlbumEdit.cs" />
+    <Compile Include="ListAlbums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AlbumCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

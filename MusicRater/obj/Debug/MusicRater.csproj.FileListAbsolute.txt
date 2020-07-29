@@ -1,0 +1,2 @@
+C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater\obj\Debug\MusicRater.csprojAssemblyReference.cache
+C:\ElevenFiftyProjects\BlueBadge\BlueBadgeProject\MusicRaterSolution\MusicRater\obj\Debug\MusicRater.csproj.CoreCompileInputs.cache

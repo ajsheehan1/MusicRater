@@ -72,11 +72,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicRater.Data\MusicRater.Data.csproj">
+      <Project>{0F4EC8AE-DBE1-416A-878C-A137E0733353}</Project>
+      <Name>MusicRater.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicRater.Models\MusicRater.Models.csproj">
+      <Project>{D334ECD8-4BB7-45A4-9E60-A4CAF19A921B}</Project>
+      <Name>MusicRater.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -52,3 +52,9 @@ C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\obj
 C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.csproj.CopyComplete
 C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.dll
 C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\obj\Debug\MusicRater.Services.pdb
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.dll
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.dll
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.pdb
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Data.dll.config
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.pdb
+C:\ElevenFiftyProjects\Blue Badge\Music_Rater\MusicRater\MusicRater.Services\bin\Debug\MusicRater.Models.dll.config

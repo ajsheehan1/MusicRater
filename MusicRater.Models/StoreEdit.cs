@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicRater.Models
 {
-    public class StoreCreate
+    public class StoreEdit
     {
         public int StoreId { get; set; }
-        [Required]
         public string StoreName { get; set; }
-        [Required]
         public string Address { get; set; }
         public decimal Rating { get; set; }
+        public Guid OwnerId { get; set; }
     }
 }

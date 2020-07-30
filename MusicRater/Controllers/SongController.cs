@@ -16,9 +16,9 @@ namespace MusicRater.Controllers
     {
         public IHttpActionResult Get()
         {
-            SongService noteService = CreateSongService();
-            var notes = noteService.GetSongs();
-            return Ok(notes);
+            SongService songService = CreateSongService();
+            var songs = songService.GetSongs();
+            return Ok(songs);
         }
 
         public IHttpActionResult Post(SongCreate song)

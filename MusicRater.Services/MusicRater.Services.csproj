@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongService.cs" />
   </ItemGroup>
@@ -81,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicRater.Data\MusicRater.Data.csproj">
-      <Project>{0f4ec8ae-dbe1-416a-878c-a137e0733353}</Project>
+      <Project>{0F4EC8AE-DBE1-416A-878C-A137E0733353}</Project>
       <Name>MusicRater.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicRater.Models\MusicRater.Models.csproj">
-      <Project>{d334ecd8-4bb7-45a4-9e60-a4caf19a921b}</Project>
+      <Project>{D334ECD8-4BB7-45A4-9E60-A4CAF19A921B}</Project>
       <Name>MusicRater.Models</Name>
     </ProjectReference>
   </ItemGroup>

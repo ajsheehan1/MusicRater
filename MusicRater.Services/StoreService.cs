@@ -85,7 +85,6 @@ namespace MusicRater.Services
                         .Stores
                         .Single(e => e.StoreId == model.StoreId && e.OwnerId == _userId);
 
-                //entity.StoreId = model.StoreId;
                 entity.StoreName = model.StoreName;
                 entity.Address = model.Address;
                 entity.Rating = model.Rating;

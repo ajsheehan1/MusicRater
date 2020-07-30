@@ -10,7 +10,6 @@ namespace MusicRater.Data
     public class Song
     {
         [Key]
-
         public int SongId { get; set; }
       
         [Required]

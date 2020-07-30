@@ -20,5 +20,6 @@ namespace MusicRater.Data
         public decimal Rating { get; set; }
         //public virtual Artist Artist { get; set; }//Should be foreign key
         public DateTimeOffset CreatedUtc { get; set; }
+
     }
 }

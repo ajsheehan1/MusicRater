@@ -17,6 +17,5 @@ namespace MusicRater.Data
         public string ArtistName { get; set; }
         [Required]
         public decimal ArtistRating { get; set; }
-
     }
 }

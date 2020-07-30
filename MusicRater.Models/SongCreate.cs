@@ -5,24 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicRater.Data
+namespace MusicRater.Models
 {
-    public class Song
+    public class SongCreate
     {
-        [Key]
-
-        public int SongId { get; set; }
-      
         [Required]
         public string Title { get; set; }
 
         [Required]
         public decimal Rating { get; set; }
 
-        // Will add foreign Key to Album/Artist later
 
-        [Required]
-        public Guid OwnerId { get; set; }
-      
+        //Foreign Key??
+
     }
 }

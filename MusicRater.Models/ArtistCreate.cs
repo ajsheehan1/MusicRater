@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicRater.Data
+namespace MusicRater.Models
 {
-    public class Album
+    public class ArtistCreate
     {
-        [Key]
-        public int AlbumId { get; set; }
+        [Required]
+        public string ArtistName { get; set; }
+        public decimal ArtistRating { get; set; }
+
     }
 }

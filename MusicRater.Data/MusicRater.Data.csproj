@@ -87,6 +87,15 @@
     <Compile Include="Album.cs" />
     <Compile Include="Artist.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202007291956457_InitialCreate.cs" />
+    <Compile Include="Migrations\202007291956457_InitialCreate.Designer.cs">
+      <DependentUpon>202007291956457_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007302045139_newtables.cs" />
+    <Compile Include="Migrations\202007302045139_newtables.Designer.cs">
+      <DependentUpon>202007302045139_newtables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
     <Compile Include="Store.cs" />
@@ -94,6 +103,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007291956457_InitialCreate.resx">
+      <DependentUpon>202007291956457_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007302045139_newtables.resx">
+      <DependentUpon>202007302045139_newtables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

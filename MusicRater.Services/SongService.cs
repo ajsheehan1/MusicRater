@@ -27,7 +27,6 @@ namespace MusicRater.Services
                     Rating = model.Rating,
                     // Adding Album/Artist Foreign Key Here
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Songs.Add(entity);

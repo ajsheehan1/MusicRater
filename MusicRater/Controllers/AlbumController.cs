@@ -13,13 +13,7 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
-        private AlbumService CreateAlbumService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var AlbumService = new AlbumService(userId);
-            return AlbumService;
-        }
-
+        
         public IHttpActionResult Get()
         {
             AlbumService albumService = CreateAlbumService();
@@ -39,5 +33,12 @@ namespace MusicRater.Controllers
 
             return Ok();
         }
+        private AlbumService CreateAlbumService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var AlbumService = new AlbumService(userId);
+            return AlbumService;
+        }
+
     }
 }

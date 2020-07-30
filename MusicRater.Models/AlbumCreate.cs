@@ -13,6 +13,8 @@ namespace MusicRater.Models
         [MinLength(1,ErrorMessage ="Please enter at least 1 character")]
         [MaxLength(20, ErrorMessage = "There are too many characters in this field")]
         public string AlbumName { get; set; }
+        
+        [Required]
         [MaxLength(800)]
         public decimal Rating { get; set; }
     }

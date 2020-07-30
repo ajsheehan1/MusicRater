@@ -22,7 +22,7 @@ namespace MusicRater.Services
             var entity =
                 new Album()
                 {
-                        //OwnerId = _userId,
+                        OwnerId = _userId,
                         AlbumName = model.AlbumName,
                         Rating = model.Rating,
                         CreatedUtc = DateTimeOffset.Now
@@ -56,39 +56,39 @@ namespace MusicRater.Services
                 }
             }
 
-            public AlbumDetails GetAlbumById(int id)
-            {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    var entity =
-                        ctx
-                            .Albums
-                            .Single(e => e.AlbumId == id && e.OwnerId == _userId);
-                    return
-                        new AlbumDetails
-                        {
-                            AlbumId = entity.AlbumId,
-                            AlbumName = entity.AlbumName,
-                            CreatedUtc = entity.CreatedUtc,
-                            Rating = entity.Rating
-                        };
-                }
-            }
+            //public AlbumDetails GetAlbumById(int id)
+            //{
+            //    using (var ctx = new ApplicationDbContext())
+            //    {
+            //        var entity =
+            //            ctx
+            //                .Albums
+            //                .Single(e => e.AlbumId == id && e.OwnerId == _userId);
+            //        return
+            //            new AlbumDetails
+            //            {
+            //                AlbumId = entity.AlbumId,
+            //                AlbumName = entity.AlbumName,
+            //                CreatedUtc = entity.CreatedUtc,
+            //                Rating = entity.Rating
+            //            };
+            //    }
+            //}
 
-            public bool DeleteAlbum(int noteId)
-            {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    var entity =
-                        ctx
-                            .Albums
-                            .Single(e => e.AlbumId == noteId && e.OwnerId == _userId);
+            //public bool DeleteAlbum(int noteId)
+            //{
+            //    using (var ctx = new ApplicationDbContext())
+            //    {
+            //        var entity =
+            //            ctx
+            //                .Albums
+            //                .Single(e => e.AlbumId == noteId && e.OwnerId == _userId);
 
-                    ctx.Albums.Remove(entity);
+            //        ctx.Albums.Remove(entity);
 
-                    return ctx.SaveChanges() == 1;
-                }
-            }
+            //        return ctx.SaveChanges() == 1;
+            //    }
+            //}
 
 
         }

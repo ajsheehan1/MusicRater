@@ -10,14 +10,23 @@ using System.Web.Http;
 
 namespace MusicRater.Controllers
 {
+    [Authorize]
     public class AlbumController : ApiController
     {
+        private AlbumService CreateAlbumService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var AlbumService = new AlbumService(userId);
+            return AlbumService;
+        }
+
         public IHttpActionResult Get()
         {
             AlbumService albumService = CreateAlbumService();
-            var notes = albumService.GetAlbums();
-            return Ok(notes);
+            var albums = albumService.GetAlbums();
+            return Ok(albums);
         }
+        //public IHttpActionResult Get(int)
         public IHttpActionResult Post(AlbumCreate album)
         {
             if (!ModelState.IsValid)
@@ -29,12 +38,6 @@ namespace MusicRater.Controllers
                 return InternalServerError();
 
             return Ok();
-        }
-        private AlbumService CreateAlbumService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var noteService = new AlbumService(userId);
-            return noteService;
         }
     }
 }

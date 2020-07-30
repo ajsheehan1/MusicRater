@@ -19,11 +19,12 @@ namespace MusicRater.Services
 
             public bool CreateAlbum(AlbumCreate model)
             {
-                var entity =
-                    new Album()
-                    {
-                        OwnerId = _userId,
+            var entity =
+                new Album()
+                {
+                        //OwnerId = _userId,
                         AlbumName = model.AlbumName,
+                        Rating = model.Rating,
                         CreatedUtc = DateTimeOffset.Now
                     };
                 using (var ctx = new ApplicationDbContext())

@@ -56,5 +56,57 @@ namespace MusicRater.Services
                 return query.ToArray();
             }
         }
+
+        public SongDetail GetSongById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.SongId == id && e.OwnerId == _userId);
+                return
+                    new SongDetail
+                    {
+                        SongId = entity.SongId,
+                        Title = entity.Title,
+                        Rating = entity.Rating,
+                        //ForeignKey Here
+                    };
+            }
+        }
+
+        public bool UpdateSong(SongEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+
+                        .Single(e => e.SongId == model.SongId && e.OwnerId == _userId);
+                    
+                entity.Title = model.Title;
+                entity.Rating = model.Rating;
+                //ForeignKeyHere
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+        public bool DeleteSong(int songId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.SongId == songId && e.OwnerId == _userId);
+
+                ctx.Songs.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

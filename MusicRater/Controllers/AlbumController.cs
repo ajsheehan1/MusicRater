@@ -13,7 +13,7 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
-        
+
         public IHttpActionResult Get()
         {
             AlbumService albumService = CreateAlbumService();

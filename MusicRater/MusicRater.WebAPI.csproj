@@ -219,23 +219,6 @@
     <Compile Include="Migrations\202007301942132_newmigration.Designer.cs">
       <DependentUpon>202007301942132_newmigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007301949389_newmigration2.cs" />
-    <Compile Include="Migrations\202007301949389_newmigration2.Designer.cs">
-      <DependentUpon>202007301949389_newmigration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007301950508_newmigration3.cs" />
-    <Compile Include="Migrations\202007301950508_newmigration3.Designer.cs">
-      <DependentUpon>202007301950508_newmigration3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007302014166_fixingissue.cs" />
-    <Compile Include="Migrations\202007302014166_fixingissue.Designer.cs">
-      <DependentUpon>202007302014166_fixingissue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007302044030_newtable.cs" />
-    <Compile Include="Migrations\202007302044030_newtable.Designer.cs">
-      <DependentUpon>202007302044030_newtable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -349,18 +332,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007301942132_newmigration.resx">
       <DependentUpon>202007301942132_newmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007301949389_newmigration2.resx">
-      <DependentUpon>202007301949389_newmigration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007301950508_newmigration3.resx">
-      <DependentUpon>202007301950508_newmigration3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007302014166_fixingissue.resx">
-      <DependentUpon>202007302014166_fixingissue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007302044030_newtable.resx">
-      <DependentUpon>202007302044030_newtable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

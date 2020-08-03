@@ -91,9 +91,9 @@
     <Compile Include="Migrations\202007291956457_InitialCreate.Designer.cs">
       <DependentUpon>202007291956457_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007302045139_newtables.cs" />
-    <Compile Include="Migrations\202007302045139_newtables.Designer.cs">
-      <DependentUpon>202007302045139_newtables.cs</DependentUpon>
+    <Compile Include="Migrations\202008031331067_with foreignkey.cs" />
+    <Compile Include="Migrations\202008031331067_with foreignkey.Designer.cs">
+      <DependentUpon>202008031331067_with foreignkey.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,8 +108,8 @@
     <EmbeddedResource Include="Migrations\202007291956457_InitialCreate.resx">
       <DependentUpon>202007291956457_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007302045139_newtables.resx">
-      <DependentUpon>202007302045139_newtables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008031331067_with foreignkey.resx">
+      <DependentUpon>202008031331067_with foreignkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

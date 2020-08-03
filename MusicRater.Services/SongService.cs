@@ -25,6 +25,7 @@ namespace MusicRater.Services
                     OwnerId = _userId,
                     Title = model.Title,
                     Rating = model.Rating,
+                    AlbumId = model.AlbumId,
                     // Adding Album/Artist Foreign Key Here
                 };
             using (var ctx = new ApplicationDbContext())
@@ -49,6 +50,7 @@ namespace MusicRater.Services
                                     SongId = e.SongId,
                                     Title = e.Title,
                                     Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
                                     // Add Album/Artist foreign key here
                                 }
                         );
@@ -71,6 +73,7 @@ namespace MusicRater.Services
                         SongId = entity.SongId,
                         Title = entity.Title,
                         Rating = entity.Rating,
+                        AlbumId = entity.AlbumId,
                         //ForeignKey Here
                     };
             }
@@ -88,6 +91,7 @@ namespace MusicRater.Services
                     
                 entity.Title = model.Title;
                 entity.Rating = model.Rating;
+                entity.AlbumId= model.AlbumId;
                 //ForeignKeyHere
 
                 return ctx.SaveChanges() == 1;

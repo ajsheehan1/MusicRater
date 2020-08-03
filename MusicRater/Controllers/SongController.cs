@@ -39,6 +39,35 @@ namespace MusicRater.Controllers
             var songService = new SongService(userId);
             return songService;
         }
+
+        public IHttpActionResult Get(int id)
+        {
+            SongService songService = CreateSongService();
+            var note = songService.GetSongById(id);
+            return Ok(note);
+        }
+
+        public IHttpActionResult Put(SongEdit song)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateSongService();
+
+            if (!service.UpdateSong(song))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateSongService();
+
+            if (!service.DeleteSong(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 
    

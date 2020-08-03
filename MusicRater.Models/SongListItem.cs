@@ -13,6 +13,8 @@ namespace MusicRater.Models
 
         public decimal Rating { get; set; }
 
+        public int AlbumId { get; set; }
+
         //Foreign Key??
     }
 }

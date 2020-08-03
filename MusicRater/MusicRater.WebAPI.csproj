@@ -215,23 +215,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007291942073_InitialCreate.cs" />
-    <Compile Include="Migrations\202007291942073_InitialCreate.Designer.cs">
-      <DependentUpon>202007291942073_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202007301942132_newmigration.cs" />
+    <Compile Include="Migrations\202007301942132_newmigration.Designer.cs">
+      <DependentUpon>202007301942132_newmigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008031501463_first.cs" />
-    <Compile Include="Migrations\202008031501463_first.Designer.cs">
-      <DependentUpon>202008031501463_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008031759141_second.cs" />
-    <Compile Include="Migrations\202008031759141_second.Designer.cs">
-      <DependentUpon>202008031759141_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008031824054_Third.cs" />
-    <Compile Include="Migrations\202008031824054_Third.Designer.cs">
-      <DependentUpon>202008031824054_Third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -343,17 +330,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007291942073_InitialCreate.resx">
-      <DependentUpon>202007291942073_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008031501463_first.resx">
-      <DependentUpon>202008031501463_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008031759141_second.resx">
-      <DependentUpon>202008031759141_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008031824054_Third.resx">
-      <DependentUpon>202008031824054_Third.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007301942132_newmigration.resx">
+      <DependentUpon>202007301942132_newmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

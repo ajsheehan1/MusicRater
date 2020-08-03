@@ -73,11 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistCreate.cs" />
+    <Compile Include="ArtistDetail.cs" />
+    <Compile Include="ArtistEdit.cs" />
     <Compile Include="ArtistListItem.cs" />
     <Compile Include="AlbumDetails.cs" />
     <Compile Include="AlbumEdit.cs" />
     <Compile Include="ListAlbums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongDetail.cs" />
+    <Compile Include="SongEdit.cs" />
     <Compile Include="StoreCreate.cs" />
     <Compile Include="StoreDetail.cs" />
     <Compile Include="StoreEdit.cs" />

@@ -13,12 +13,6 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
-        private AlbumService CreateAlbumService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var AlbumService = new AlbumService(userId);
-            return AlbumService;
-        }
 
         public IHttpActionResult Get()
         {
@@ -35,6 +29,34 @@ namespace MusicRater.Controllers
             var service = CreateAlbumService();
 
             if (!service.CreateAlbum(album))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        private AlbumService CreateAlbumService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var AlbumService = new AlbumService(userId);
+            return AlbumService;
+        }
+        public IHttpActionResult Put(AlbumEdit album)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateAlbumService();
+
+            if (!service.UpdateAlbum(album))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateAlbumService();
+
+            if (!service.DeleteAlbum(id))
                 return InternalServerError();
 
             return Ok();

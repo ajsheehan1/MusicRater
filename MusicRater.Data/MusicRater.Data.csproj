@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202008031331067_with foreignkey.Designer.cs">
       <DependentUpon>202008031331067_with foreignkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008032016246_second develop migration.cs" />
+    <Compile Include="Migrations\202008032016246_second develop migration.Designer.cs">
+      <DependentUpon>202008032016246_second develop migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
@@ -105,16 +109,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007301402095_InitialCreate.resx">
-      <DependentUpon>202007301402095_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008031848066_forth.resx">
-      <DependentUpon>202008031848066_forth.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\202007291956457_InitialCreate.resx">
       <DependentUpon>202007291956457_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008031331067_with foreignkey.resx">
       <DependentUpon>202008031331067_with foreignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008032016246_second develop migration.resx">
+      <DependentUpon>202008032016246_second develop migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

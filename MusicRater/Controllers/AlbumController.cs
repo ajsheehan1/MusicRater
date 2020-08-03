@@ -39,5 +39,26 @@ namespace MusicRater.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(AlbumEdit album)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateAlbumService();
+
+            if (!service.UpdateAlbum(album))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateAlbumService();
+
+            if (!service.DeleteAlbum(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }

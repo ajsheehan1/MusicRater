@@ -22,7 +22,7 @@ namespace MusicRater.Services
             var entity =
                 new Album()
                 {
-                        OwnerId = _userId,
+                        //OwnerId = _userId,
                         AlbumName = model.AlbumName,
                         Rating = model.Rating,
                         CreatedUtc = DateTimeOffset.Now
@@ -74,22 +74,37 @@ namespace MusicRater.Services
                     };
             }
         }
+      
+            public bool DeleteAlbum(int albumId)
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                            .Albums
+                            .Single(e => e.AlbumId == albumId && e.OwnerId == _userId);
 
-        public bool DeleteAlbum(int noteId)
+                ctx.Albums.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+                }
+            }
+        public bool UpdateAlbum(AlbumEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Albums
-                        .Single(e => e.AlbumId == noteId && e.OwnerId == _userId);
+                        .Single(e => e.AlbumId == model.AlbumId && e.OwnerId == _userId);
 
-                ctx.Albums.Remove(entity);
+                entity.AlbumName = model.AlbumName;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
+    }
 
     }
 }

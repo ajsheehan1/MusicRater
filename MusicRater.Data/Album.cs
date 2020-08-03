@@ -15,7 +15,7 @@ namespace MusicRater.Data
         [Required]
         public string AlbumName { get; set; }
         [Required]
-        public decimal Rating { get; set; }
+        public decimal Rating  { get; set; }
         //public virtual Artist Artist { get; set; }//Should be foreign key
         public DateTimeOffset CreatedUtc { get; set; }
 

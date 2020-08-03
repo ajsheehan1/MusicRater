@@ -34,7 +34,7 @@ namespace MusicRater.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
+        //----------------------------------
         public IEnumerable<StoreListItem> GetStores()
         {
             using (var ctx = new ApplicationDbContext())
@@ -88,6 +88,21 @@ namespace MusicRater.Services
                 entity.StoreName = model.StoreName;
                 entity.Address = model.Address;
                 entity.Rating = model.Rating;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteStore(int noteId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Stores
+                        .Single(e => e.StoreId == noteId && e.OwnerId == _userId);
+
+                ctx.Stores.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

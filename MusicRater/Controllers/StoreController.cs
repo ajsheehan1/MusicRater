@@ -45,8 +45,8 @@ namespace MusicRater.Controllers
         public IHttpActionResult Get(int id)
         {
             StoreService storeService = CreateStoreService();
-            var note = storeService.GetStoreById(id);
-            return Ok(note);
+            var store = storeService.GetStoreById(id);
+            return Ok(store);
         }
 
         public IHttpActionResult Put(StoreEdit store)
@@ -57,6 +57,16 @@ namespace MusicRater.Controllers
             var service = CreateStoreService();
 
             if (!service.UpdateStore(store))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateStoreService();
+
+            if (!service.DeleteStore(id))
                 return InternalServerError();
 
             return Ok();

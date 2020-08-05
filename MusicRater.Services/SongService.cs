@@ -25,9 +25,9 @@ namespace MusicRater.Services
                     OwnerId = _userId,
                     Title = model.Title,
                     Rating = model.Rating,
+                    AlbumId = model.AlbumId,
                     // Adding Album/Artist Foreign Key Here
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Songs.Add(entity);
@@ -50,11 +50,66 @@ namespace MusicRater.Services
                                     SongId = e.SongId,
                                     Title = e.Title,
                                     Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
                                     // Add Album/Artist foreign key here
                                 }
                         );
 
                 return query.ToArray();
+            }
+        }
+
+        public SongDetail GetSongById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.SongId == id && e.OwnerId == _userId);
+                return
+                    new SongDetail
+                    {
+                        SongId = entity.SongId,
+                        Title = entity.Title,
+                        Rating = entity.Rating,
+                        AlbumId = entity.AlbumId,
+                        //ForeignKey Here
+                    };
+            }
+        }
+
+        public bool UpdateSong(SongEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+
+                        .Single(e => e.SongId == model.SongId && e.OwnerId == _userId);
+                    
+                entity.Title = model.Title;
+                entity.Rating = model.Rating;
+                entity.AlbumId= model.AlbumId;
+                //ForeignKeyHere
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+        public bool DeleteSong(int songId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.SongId == songId && e.OwnerId == _userId);
+
+                ctx.Songs.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

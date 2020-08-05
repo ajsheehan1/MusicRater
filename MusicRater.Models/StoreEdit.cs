@@ -12,6 +12,6 @@ namespace MusicRater.Models
         public string StoreName { get; set; }
         public string Address { get; set; }
         public decimal Rating { get; set; }
-        public Guid OwnerId { get; set; }
+        //public Guid OwnerId { get; set; }
     }
 }

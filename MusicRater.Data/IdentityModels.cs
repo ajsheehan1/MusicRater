@@ -34,6 +34,7 @@ namespace MusicRater.Data
         }
         // This is where we will add our DBsets 
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<ArtistRating> ArtistRatings { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
 

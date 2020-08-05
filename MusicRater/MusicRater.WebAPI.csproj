@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\ArtistRatingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\SongController.cs" />

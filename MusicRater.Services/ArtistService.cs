@@ -17,6 +17,10 @@ namespace MusicRater.Services
             _userId = userId;
         }
 
+        public ArtistService()
+        {
+        }
+
         public bool CreateArtist(ArtistCreate model)
         {
             var entity =
@@ -41,15 +45,15 @@ namespace MusicRater.Services
                 var query =
                     ctx
                         .Artists
-                        .Where(e => e.OwnerId == _userId)
+                        //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new ArtistListItem
                                 {
                                     ArtistId = e.ArtistId,
                                     ArtistName = e.ArtistName,
-                                    ArtistRating = e.ArtistRating
-
+                                    ArtistRating = e.ArtistRating,
+                                    OwnerId = e.OwnerId
                                 }
                         );
 
@@ -64,13 +68,16 @@ namespace MusicRater.Services
                 var entity =
                     ctx
                         .Artists
-                        .Single(e => e.ArtistId == id && e.OwnerId == _userId);
+                        .Single(e => e.ArtistId == id);
+                        //.Single(e => e.ArtistId == id && e.OwnerId == _userId);
                 return
                     new ArtistDetail
                     {
                         ArtistId = entity.ArtistId,
                         ArtistName = entity.ArtistName,
-                        ArtistRating = entity.ArtistRating
+                        ArtistRating = entity.ArtistRating,
+                        CulumativeRating = entity.CulumativeRating,
+                        NumberOfRatings = entity.NumberOfRatings
                     };
             }
 
@@ -83,10 +90,13 @@ namespace MusicRater.Services
                 var entity =
                     ctx
                         .Artists
-                        .Single(e => e.ArtistId == model.ArtistId && e.OwnerId == _userId);
+                        .Single(e => e.ArtistId == model.ArtistId);
+                        //.Single(e => e.ArtistId == model.ArtistId && e.OwnerId == _userId);
 
                 entity.ArtistName = model.ArtistName;
                 entity.ArtistRating = model.ArtistRating;
+                entity.CulumativeRating = model.CulumativeRating;
+                entity.NumberOfRatings = model.NumberOfRatings;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MusicRater.Models
 {
-    public class ArtistListItem
+    public class ArtistRatingByArtist
     {
+        public int ArtistRatingId { get; set; }
         public int ArtistId { get; set; }
-        public string ArtistName { get; set; }
-        public decimal ArtistRating { get; set; }
+        public decimal ArtistIndividualRating { get; set; }
         public Guid OwnerId { get; set; }
 
     }

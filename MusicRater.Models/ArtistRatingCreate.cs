@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicRater.Models
 {
-    public class ArtistListItem
+    public class ArtistRatingCreate
     {
         public int ArtistId { get; set; }
-        public string ArtistName { get; set; }
-        public decimal ArtistRating { get; set; }
-        public Guid OwnerId { get; set; }
+        public decimal ArtistIndividualRating { get; set; }
 
     }
 }

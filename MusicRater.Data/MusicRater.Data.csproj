@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Album.cs" />
     <Compile Include="Artist.cs" />
+    <Compile Include="ArtistRating.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202007291956457_InitialCreate.cs" />
     <Compile Include="Migrations\202007291956457_InitialCreate.Designer.cs">

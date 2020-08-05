@@ -78,6 +78,10 @@
     <Compile Include="ArtistListItem.cs" />
     <Compile Include="AlbumDetails.cs" />
     <Compile Include="AlbumEdit.cs" />
+    <Compile Include="ArtistRatingByArtist.cs" />
+    <Compile Include="ArtistRatingCreate.cs" />
+    <Compile Include="ArtistRatingEdit.cs" />
+    <Compile Include="ArtistRatingListItem.cs" />
     <Compile Include="ListAlbums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongDetail.cs" />

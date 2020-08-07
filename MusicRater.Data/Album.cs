@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace MusicRater.Data
 
         [Required]
         public Guid OwnerId { get; set; }
+
+        [ForeignKey("ArtistId")]
+        public int ArtistId { get; set; }
+        public Artist Artist { get; set; }
 
     }
 }

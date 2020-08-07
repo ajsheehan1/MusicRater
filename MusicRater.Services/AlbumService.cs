@@ -22,10 +22,11 @@ namespace MusicRater.Services
             var entity =
                 new Album()
                 {
-                        //OwnerId = _userId,
+                        OwnerId = _userId,
                         AlbumName = model.AlbumName,
                         Rating = model.Rating,
-                        CreatedUtc = DateTimeOffset.Now
+                        ArtistId = model.ArtistId,
+                        //CreatedUtc = DateTimeOffset.Now
                     };
                 using (var ctx = new ApplicationDbContext())
                 {
@@ -49,7 +50,8 @@ namespace MusicRater.Services
                                     AlbumId = e.AlbumId,
                                     AlbumName = e.AlbumName,
                                     Rating = e.Rating,
-                                    CreatedUtc = e.CreatedUtc
+                                    ArtistId =e.ArtistId
+                                    //CreatedUtc = e.CreatedUtc
                                 }
                                 );
                     return query.ToArray();
@@ -69,12 +71,30 @@ namespace MusicRater.Services
                     {
                         AlbumId = entity.AlbumId,
                         AlbumName = entity.AlbumName,
-                        CreatedUtc = entity.CreatedUtc,
-                        Rating = entity.Rating
+                        //CreatedUtc = entity.CreatedUtc,
+                        Rating = entity.Rating,
+                        ArtistId = entity.ArtistId
                     };
             }
         }
       
+        public bool UpdateAlbum(AlbumEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Albums
+                        .Single(e => e.AlbumId == model.AlbumId && e.OwnerId == _userId);
+
+
+                entity.AlbumName = model.AlbumName;
+                entity.Rating = model.Rating;
+                entity.ArtistId = model.ArtistId;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
             public bool DeleteAlbum(int albumId)
             {
                 using (var ctx = new ApplicationDbContext())
@@ -89,20 +109,6 @@ namespace MusicRater.Services
                 return ctx.SaveChanges() == 1;
                 }
             }
-        public bool UpdateAlbum(AlbumEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Albums
-                        .Single(e => e.AlbumId == model.AlbumId && e.OwnerId == _userId);
-
-                entity.AlbumName = model.AlbumName;
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
 
     }
 

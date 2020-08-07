@@ -102,5 +102,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicRater.Data\MusicRater.Data.csproj">
+      <Project>{0F4EC8AE-DBE1-416A-878C-A137E0733353}</Project>
+      <Name>MusicRater.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

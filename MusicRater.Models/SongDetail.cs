@@ -9,8 +9,11 @@ namespace MusicRater.Models
     public class SongDetail
     {
         public int SongId { get; set; }
-        public string Title { get; set; }
+        public string SongName { get; set; }
         public decimal Rating { get; set; }
+
+        public decimal CulumativeRating { get; set; }
+        public int NumberOfRatings { get; set; }
 
         public int AlbumId { get; set; }
 

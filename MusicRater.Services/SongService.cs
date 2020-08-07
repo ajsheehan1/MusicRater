@@ -16,6 +16,9 @@ namespace MusicRater.Services
         {
             _userId = userId;
         }
+        public SongService()
+        {
+        }
 
         public bool CreateSong(SongCreate model)
         {
@@ -23,10 +26,10 @@ namespace MusicRater.Services
                 new Song()
                 {
                     OwnerId = _userId,
-                    Title = model.Title,
+                    SongName = model.SongName,
                     Rating = model.Rating,
                     AlbumId = model.AlbumId,
-                    // Adding Album/Artist Foreign Key Here
+                    
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -42,13 +45,13 @@ namespace MusicRater.Services
                 var query =
                     ctx
                         .Songs
-                        .Where(e => e.OwnerId == _userId)
+                        //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new SongListItem
                                 {
                                     SongId = e.SongId,
-                                    Title = e.Title,
+                                    SongName = e.SongName,
                                     Rating = e.Rating,
                                     AlbumId = e.AlbumId,
                                     // Add Album/Artist foreign key here
@@ -66,15 +69,18 @@ namespace MusicRater.Services
                 var entity =
                     ctx
                         .Songs
-                        .Single(e => e.SongId == id && e.OwnerId == _userId);
+                        .Single(e => e.SongId == id);
+                        
                 return
                     new SongDetail
                     {
                         SongId = entity.SongId,
-                        Title = entity.Title,
+                        SongName = entity.SongName,
                         Rating = entity.Rating,
                         AlbumId = entity.AlbumId,
-                        //ForeignKey Here
+                        CulumativeRating = entity.CulumativeRating,
+                        NumberOfRatings = entity.NumberOfRatings
+                        
                     };
             }
         }
@@ -86,18 +92,37 @@ namespace MusicRater.Services
                 var entity =
                     ctx
                         .Songs
-
+                        
                         .Single(e => e.SongId == model.SongId && e.OwnerId == _userId);
-                    
-                entity.Title = model.Title;
+                entity.SongName = model.SongName;
                 entity.Rating = model.Rating;
+                entity.CulumativeRating = model.CulumativeRating;
+                entity.NumberOfRatings = model.NumberOfRatings;
                 entity.AlbumId= model.AlbumId;
-                //ForeignKeyHere
+                
 
                 return ctx.SaveChanges() == 1;
 
             }
         }
+
+        public bool UpdateRatingAverage(SongEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.SongId == model.SongId);
+                entity.Rating = model.Rating;
+                entity.CulumativeRating = model.CulumativeRating;
+                entity.NumberOfRatings = model.NumberOfRatings;
+              
+                return ctx.SaveChanges() == 1;
+
+            } //Update the rating only 
+        }
+
         public bool DeleteSong(int songId)
         {
             using (var ctx = new ApplicationDbContext())

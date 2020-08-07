@@ -7,13 +7,13 @@ namespace MusicRater.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class seconddevelopmigration : IMigrationMetadata
+    public sealed partial class afterArtistRating : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(seconddevelopmigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(afterArtistRating));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008032016246_second develop migration"; }
+            get { return "202008061341387_afterArtistRating"; }
         }
         
         string IMigrationMetadata.Source

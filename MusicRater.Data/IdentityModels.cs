@@ -38,6 +38,8 @@ namespace MusicRater.Data
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
 
+        public DbSet<SongRating> SongRatings { get; set; }
+
         public DbSet<Store> Stores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

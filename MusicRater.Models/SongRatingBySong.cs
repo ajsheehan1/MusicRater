@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace MusicRater.Models
 {
-    public class SongListItem
+    public class SongRatingBySong
     {
+        public int SongRatingId { get; set; }
         public int SongId { get; set; }
-        public string SongName { get; set; }
-
-        public decimal Rating { get; set; }
-
-        public int AlbumId { get; set; }
-
-        //Foreign Key??
+        public decimal SongIndividualRating { get; set; }
+        public Guid OwnerId { get; set; }
     }
 }

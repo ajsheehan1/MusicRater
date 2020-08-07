@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicRater.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace MusicRater.Models
         public string AlbumName { get; set; }
         public decimal Rating { get; set; }
         public int ArtistId { get; set; }
+        public Artist Artist { get; set; }
 
     }
 }

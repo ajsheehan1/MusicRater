@@ -72,6 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumRatingByAlbum.cs" />
+    <Compile Include="AlbumRatingCreate.cs" />
+    <Compile Include="AlbumRatingEdit.cs" />
+    <Compile Include="AlbumRatingListItem.cs" />
     <Compile Include="ArtistCreate.cs" />
     <Compile Include="ArtistDetail.cs" />
     <Compile Include="ArtistEdit.cs" />

@@ -17,8 +17,9 @@ namespace MusicRater.Data
         public string AlbumName { get; set; }
         [Required]
         public decimal Rating  { get; set; }
-        //public virtual Artist Artist { get; set; }//Should be foreign key
         public DateTimeOffset CreatedUtc { get; set; }
+        public decimal CulumativeRating { get; set; }
+        public int NumberOfRatings { get; set; }
 
         [Required]
         public Guid OwnerId { get; set; }

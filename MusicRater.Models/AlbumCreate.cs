@@ -15,7 +15,9 @@ namespace MusicRater.Models
         public string AlbumName { get; set; }
 
         //[MaxLength(800)] 
-        public decimal Rating { get; set; } //look up data annations for decimals
+        public decimal Rating { get; set; } 
+        public int ArtistId { get; set; }
+
 
     }
 }

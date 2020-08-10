@@ -10,13 +10,12 @@ namespace MusicRater.Models
     public class SongCreate
     {
         [Required]
-        public string Title { get; set; }
+        public string SongName { get; set; }
 
-        [Required]
         public decimal Rating { get; set; }
 
         public int AlbumId { get; set; }
-        //Foreign Key??
+        //Foreign Key
 
     }
 }

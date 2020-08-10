@@ -14,16 +14,13 @@ namespace MusicRater.Data
         public int SongId { get; set; }
       
         [Required]
-        public string Title { get; set; }
+        public string SongName { get; set; }
 
         [Required]
         public decimal Rating { get; set; }
 
-        // Will add foreign Key to Album/Artist later
-        //[Required]
-        //public int CustomerId { get; set; }
-        //[ForeignKey(nameof(CustomerId))]
-        //public virtual Customer Customer { get; set; }
+        public decimal CulumativeRating { get; set; }
+        public int NumberOfRatings { get; set; }
 
         [Required]
         public int AlbumId { get; set; }

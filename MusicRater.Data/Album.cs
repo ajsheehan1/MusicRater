@@ -23,9 +23,11 @@ namespace MusicRater.Data
         [Required]
         public Guid OwnerId { get; set; }
 
-        [ForeignKey("ArtistId")]
+        [Required]
         public int ArtistId { get; set; }
-        public Artist Artist { get; set; }
+        [ForeignKey(nameof(ArtistId))]
+        public virtual Artist Artist { get; set; }
+
 
     }
 }

@@ -25,48 +25,39 @@ namespace MusicRater.Services
                 {
                     OwnerId = _userId,
                     ArtistId = model.ArtistId,
-                    ArtistIndividualRating = model.ArtistIndividualRating
+                    ArtistIndividualRating = model.ArtistIndividualRating,
+                    Artist = model.Artist
                 };
-
-            // retrieve the Artist record to which the Rating refers
-            var updateArtistRating = new ArtistService();
-            ArtistDetail artistDetail = updateArtistRating.GetArtistById(model.ArtistId);
-
-            // Format an object of type ArtistEdit 
-            // > increase the Cumulative Rating by this ArtistIndividualRating
-            // > increase the Number of Ratings by 1 (for this rating)
-            // > assign the new average rating to the ArtistRating field
-            ArtistEdit artistUpdate = new ArtistEdit();
-
-            artistUpdate.ArtistId = artistDetail.ArtistId;
-            artistUpdate.ArtistName = artistDetail.ArtistName;
-
-            artistUpdate.CulumativeRating = artistDetail.CulumativeRating + model.ArtistIndividualRating;
-            artistUpdate.NumberOfRatings = artistDetail.NumberOfRatings + 1;
-            decimal newCumulativeRating = artistUpdate.CulumativeRating;
-            int newNumberOfRatings = artistUpdate.NumberOfRatings;
-            artistUpdate.ArtistRating = newCumulativeRating / newNumberOfRatings;
-
-            // update the Artist which is represented in this new ArtistRating
-            bool updated = updateArtistRating.UpdateArtist(artistUpdate);
-
-
-        //artistDetail.CulumativeRating += model.ArtistIndividualRating;
-        //artistDetail.NumberRatings += 1;
-
-            // Call CalculateArtistAvgRating with the current model
-            // inside the method, calcuate the average of all Ratings for the Artist in the model
-            // return an object of type ArtistEdit - to retain the artist name and ID, and it will have the average Rating in the Rating field
-            //ArtistEdit artistWithAvgRating = CalculateArtistAvgRating(model);
-
-            //bool ArtistRatingUpdated = UpdateRatingInArtist(artistWithAvgRating);
-
-
+            // Add the new ArtistRating to the table
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.ArtistRatings.Add(entity);
+                bool addedArtistRating = ctx.SaveChanges() == 1;
+                if (!addedArtistRating)
+                {
+                    return false;
+                }
+
+            }
+
+            // Update the Artist record 
+            using (var ctx = new ApplicationDbContext())
+            {
+                // retrieve the ArtistRating record we just posted so we can follow the foreign key to the Artist record
+                var newArtistRating =
+                    ctx
+                        .ArtistRatings
+                        .Single(e => e.ArtistRatingId == entity.ArtistRatingId && e.OwnerId == _userId);
+
+                // Update the fields in the Artist record at the other end of the foreign key
+                newArtistRating.Artist.CulumativeRating += model.ArtistIndividualRating;
+                newArtistRating.Artist.NumberOfRatings += 1;
+
+                newArtistRating.Artist.ArtistRating = newArtistRating.Artist.CulumativeRating / newArtistRating.Artist.NumberOfRatings;
+
                 return ctx.SaveChanges() == 1;
             }
+
         } // CreateArtistRating
 
 
@@ -86,7 +77,7 @@ namespace MusicRater.Services
                                     ArtistId = e.ArtistId,
                                     ArtistIndividualRating = e.ArtistIndividualRating,
                                     OwnerId = e.OwnerId
-    }
+                                }
                         );
 
                 return query.ToArray();
@@ -154,40 +145,9 @@ namespace MusicRater.Services
             }
         } // UpdateArtistRating
 
+
         public bool DeleteArtistRating(int artistRatingId)
         {
-            // since we're just passing in the id of the ArtistRating to be deleted,
-            // we need to get the ArtistRating record so we know what amount to deduct from the 
-            // CumulativeRating in the Artist record
-            // retrieve the Artist record to which the Rating refers
-            // Get ArtistRatingId, ArtistId, and ArtistIndividualRating
-            ArtistRatingEdit artistRatingToDeduct = GetArtistRatingById(artistRatingId);
-
-            // retrieve the Artist record to which the Rating refers
-            var updateArtistRating = new ArtistService();
-            ArtistDetail artistDetail = updateArtistRating.GetArtistById(artistRatingToDeduct.ArtistId);
-
-            // Format an object of type ArtistEdit 
-            // > increase the Cumulative Rating by this ArtistIndividualRating
-            // > increase the Number of Ratings by 1 (for this rating)
-            // > assign the new average rating to the ArtistRating field
-            ArtistEdit artistUpdate = new ArtistEdit();
-
-            artistUpdate.ArtistId = artistDetail.ArtistId;
-            artistUpdate.ArtistName = artistDetail.ArtistName;
-
-            artistUpdate.CulumativeRating = artistDetail.CulumativeRating - artistRatingToDeduct.ArtistIndividualRating;
-            artistUpdate.NumberOfRatings = artistDetail.NumberOfRatings - 1;
-            decimal newCumulativeRating = artistUpdate.CulumativeRating;
-            int newNumberOfRatings = artistUpdate.NumberOfRatings;
-            artistUpdate.ArtistRating = newCumulativeRating / newNumberOfRatings;
-
-            // update the Artist which is represented in this new ArtistRating
-            bool updated = updateArtistRating.UpdateArtist(artistUpdate);
-
-
-
-
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
@@ -195,12 +155,23 @@ namespace MusicRater.Services
                         .ArtistRatings
                         .Single(e => e.ArtistRatingId == artistRatingId && e.OwnerId == _userId);
 
-                ctx.ArtistRatings.Remove(entity);
+                entity.Artist.CulumativeRating -= entity.ArtistIndividualRating;
+                entity.Artist.NumberOfRatings -= 1;
 
-                return ctx.SaveChanges() == 1;
+                if (entity.Artist.NumberOfRatings == 0)
+                {
+                    entity.Artist.ArtistRating = 0;
+                }
+                else
+                {
+                    entity.Artist.ArtistRating = entity.Artist.CulumativeRating / entity.Artist.NumberOfRatings;
+                }
+
+                ctx.ArtistRatings.Remove(entity);
+                return ctx.SaveChanges() == 2;
             }
 
         } // DeleteArtistRating
 
-    }
-}
+    }  // public class ArtistRatingService
+} // namespace MusicRater.Services

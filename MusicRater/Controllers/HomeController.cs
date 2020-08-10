@@ -14,5 +14,12 @@ namespace MusicRater.Controllers
 
             return View();
         }
+        public ActionResult Artist()
+        {
+            ViewBag.Title = "Artist";
+
+            return View();
+        }
+
     }
 }

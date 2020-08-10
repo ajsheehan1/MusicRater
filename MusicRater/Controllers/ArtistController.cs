@@ -4,10 +4,11 @@ using MusicRater.Services;
 using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace MusicRater.Controllers
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class ArtistController : ApiController
     {
         public IHttpActionResult Get()
@@ -65,5 +66,16 @@ namespace MusicRater.Controllers
 
             return Ok();
         } // Delete
+
+        //public ActionResult Artist()
+        //{
+        //    ViewBag.Title = "Artist";
+
+        //    return View();
+        //}
+
+
     }
+
+
 }

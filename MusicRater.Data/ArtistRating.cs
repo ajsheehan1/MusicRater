@@ -13,9 +13,9 @@ namespace MusicRater.Data
         [Key]
         public int ArtistRatingId { get; set; }
         [Required]
-        public int ArtistId { get; set; }
-        [ForeignKey(nameof(ArtistId))]
-        public virtual Artist Artist { get; set; }
+        public int AlbumId { get; set; }
+        [ForeignKey(nameof(AlbumId))]
+        public virtual Album Album { get; set; }
         [Required]
         public decimal ArtistIndividualRating { get; set; }
         [Required]

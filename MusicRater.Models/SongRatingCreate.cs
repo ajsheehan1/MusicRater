@@ -11,6 +11,10 @@ namespace MusicRater.Models
     public class SongRatingCreate
     {
         public int SongId { get; set; }
+
+        [ForeignKey(nameof(SongId))]
+        public virtual Song Song { get; set; }
+
         public decimal SongIndividualRating { get; set; }
 
         [ForeignKey(nameof(SongId))]

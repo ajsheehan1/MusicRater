@@ -63,8 +63,9 @@ namespace MusicRater.Controllers
             var service = CreateArtistRatingService();
 
             if (!service.DeleteArtistRating(id))
+            {
                 return InternalServerError();
-
+            }
             return Ok();
         } // Delete
 

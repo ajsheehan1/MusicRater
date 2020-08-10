@@ -36,6 +36,7 @@ namespace MusicRater.Data
         public DbSet<Artist> Artists { get; set; }
         public DbSet<ArtistRating> ArtistRatings { get; set; }
         public DbSet<Album> Albums { get; set; }
+        public DbSet<AlbumRating> AlbumRatings { get; set; }
         public DbSet<Song> Songs { get; set; }
 
         public DbSet<SongRating> SongRatings { get; set; }

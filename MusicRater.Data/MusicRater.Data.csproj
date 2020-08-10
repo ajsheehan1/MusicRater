@@ -105,6 +105,10 @@
     <Compile Include="Migrations\202008101529043_fixfk.Designer.cs">
       <DependentUpon>202008101529043_fixfk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008101818279_commsongrating.cs" />
+    <Compile Include="Migrations\202008101818279_commsongrating.Designer.cs">
+      <DependentUpon>202008101818279_commsongrating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008101529043_fixfk.resx">
       <DependentUpon>202008101529043_fixfk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008101818279_commsongrating.resx">
+      <DependentUpon>202008101818279_commsongrating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

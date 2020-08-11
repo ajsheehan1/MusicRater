@@ -25,6 +25,7 @@ namespace MusicRater.Services
                     OwnerId = _userId,
                     StoreId = model.StoreId,
                     StoreName = model.StoreName,
+                    Address = model.Address,
                     Rating  =model.Rating
                 };
 
@@ -49,6 +50,8 @@ namespace MusicRater.Services
                                 {
                                     StoreId = e.StoreId,
                                     StoreName = e.StoreName,
+                                    Address = e.Address,
+                                    Rating = e.Rating,
                                 }
                         );
 

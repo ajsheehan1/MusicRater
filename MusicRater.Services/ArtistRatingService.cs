@@ -97,6 +97,7 @@ namespace MusicRater.Services
                                 new ArtistRatingByArtist
                                 {
                                     ArtistRatingId = e.ArtistRatingId,
+                                    ArtistId = e.ArtistId,
                                     ArtistIndividualRating = e.ArtistIndividualRating,
                                     OwnerId = e.OwnerId
 

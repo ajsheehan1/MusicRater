@@ -52,6 +52,7 @@ namespace MusicRater.Services
                             {
                                 AlbumId = e.AlbumId,
                                 AlbumName = e.AlbumName,
+                                ArtistName = e.Artist.ArtistName,
                                 Rating = e.Rating,
                                 ArtistId = e.ArtistId
                                     //CreatedUtc = e.CreatedUtc
@@ -74,12 +75,42 @@ namespace MusicRater.Services
                     {
                         AlbumId = entity.AlbumId,
                         AlbumName = entity.AlbumName,
+                        ArtistName = entity.Artist.ArtistName,
                         //CreatedUtc = entity.CreatedUtc,
                         Rating = entity.Rating,
                         ArtistId = entity.ArtistId
                     };
             }
         }
+
+
+        //GetByArtistId
+        public IEnumerable<AlbumDetails> GetSongsByArtist(int ArtistId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Albums
+                        .Where(e => e.Artist.ArtistId == ArtistId)
+                        .Select(
+                            e =>
+                                new AlbumDetails
+                                {
+                                    
+                                    Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
+                                    AlbumName = e.AlbumName,
+                                    ArtistName = e.Artist.ArtistName,
+
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+
 
         public bool UpdateAlbum(AlbumEdit model)
         {

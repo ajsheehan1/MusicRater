@@ -7,13 +7,13 @@ namespace MusicRater.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class addingAlbumArtisttoSong : IMigrationMetadata
+    public sealed partial class postmergemigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addingAlbumArtisttoSong));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(postmergemigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008111601449_addingAlbumArtisttoSong"; }
+            get { return "202008112147530_postmergemigration"; }
         }
         
         string IMigrationMetadata.Source

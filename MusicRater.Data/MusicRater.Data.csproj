@@ -89,33 +89,9 @@
     <Compile Include="Artist.cs" />
     <Compile Include="ArtistRating.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202008061341387_afterArtistRating.cs" />
-    <Compile Include="Migrations\202008061341387_afterArtistRating.Designer.cs">
-      <DependentUpon>202008061341387_afterArtistRating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008061418036_addedSongRating.cs" />
-    <Compile Include="Migrations\202008061418036_addedSongRating.Designer.cs">
-      <DependentUpon>202008061418036_addedSongRating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008061446545_tryingtofixtable.cs" />
-    <Compile Include="Migrations\202008061446545_tryingtofixtable.Designer.cs">
-      <DependentUpon>202008061446545_tryingtofixtable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008101529043_fixfk.cs" />
-    <Compile Include="Migrations\202008101529043_fixfk.Designer.cs">
-      <DependentUpon>202008101529043_fixfk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008101818279_commsongrating.cs" />
-    <Compile Include="Migrations\202008101818279_commsongrating.Designer.cs">
-      <DependentUpon>202008101818279_commsongrating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008101943040_testmigr.cs" />
-    <Compile Include="Migrations\202008101943040_testmigr.Designer.cs">
-      <DependentUpon>202008101943040_testmigr.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008111601449_addingAlbumArtisttoSong.cs" />
-    <Compile Include="Migrations\202008111601449_addingAlbumArtisttoSong.Designer.cs">
-      <DependentUpon>202008111601449_addingAlbumArtisttoSong.cs</DependentUpon>
+    <Compile Include="Migrations\202008112147530_postmergemigration.cs" />
+    <Compile Include="Migrations\202008112147530_postmergemigration.Designer.cs">
+      <DependentUpon>202008112147530_postmergemigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,26 +105,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008061341387_afterArtistRating.resx">
-      <DependentUpon>202008061341387_afterArtistRating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008061418036_addedSongRating.resx">
-      <DependentUpon>202008061418036_addedSongRating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008061446545_tryingtofixtable.resx">
-      <DependentUpon>202008061446545_tryingtofixtable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008101529043_fixfk.resx">
-      <DependentUpon>202008101529043_fixfk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008101818279_commsongrating.resx">
-      <DependentUpon>202008101818279_commsongrating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008101943040_testmigr.resx">
-      <DependentUpon>202008101943040_testmigr.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008111601449_addingAlbumArtisttoSong.resx">
-      <DependentUpon>202008111601449_addingAlbumArtisttoSong.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008112147530_postmergemigration.resx">
+      <DependentUpon>202008112147530_postmergemigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

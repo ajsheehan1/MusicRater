@@ -17,7 +17,6 @@ namespace MusicRater.Models
 
         public decimal SongIndividualRating { get; set; }
 
-        [ForeignKey(nameof(SongId))]
-        public virtual Song Song { get; set; }
+      
     }
 }

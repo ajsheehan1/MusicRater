@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicRater.Data
+namespace MusicRater.Models
 {
-    public class Store
+    public class StoreFrontEnd
     {
         [Key]
         public int StoreId { get; set; }
@@ -17,11 +16,5 @@ namespace MusicRater.Data
         public string Address { get; set; }
         public decimal Rating { get; set; }
         public Guid OwnerId { get; set; }
-
-        public decimal StoreRating { get; set; }
-        public decimal CulumativeRating { get; set; }
-        public int NumberOfRatings { get; set; }
     }
 }
-
-

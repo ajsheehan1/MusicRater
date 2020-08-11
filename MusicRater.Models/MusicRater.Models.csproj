@@ -101,6 +101,10 @@
     <Compile Include="SongCreate.cs" />
     <Compile Include="SongListItem.cs" />
     <Compile Include="AlbumCreate.cs" />
+    <Compile Include="StoreRatingByStore.cs" />
+    <Compile Include="StoreRatingCreate.cs" />
+    <Compile Include="StoreRatingEdit.cs" />
+    <Compile Include="StoreRatingListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

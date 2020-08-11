@@ -122,6 +122,7 @@
     <Compile Include="Song.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="SongRating.cs" />
+    <Compile Include="StoreRating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

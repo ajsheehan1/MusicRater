@@ -10,7 +10,6 @@ namespace MusicRater.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MusicRater.Models.ApplicationDbContext";
         }
 
         protected override void Seed(MusicRater.Models.ApplicationDbContext context)

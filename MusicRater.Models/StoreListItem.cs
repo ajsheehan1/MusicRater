@@ -10,5 +10,9 @@ namespace MusicRater.Models
     {
         public int StoreId { get; set; }
         public string StoreName { get; set; }
+
+        public string Address { get; set;  }
+
+        public decimal Rating { get; set; }
     }
 }

@@ -98,8 +98,8 @@ namespace MusicRater.Services
                                 {
                                     StoreRatingId = e.StoreRatingId,
                                     StoreIndividualRating = e.StoreIndividualRating,
-                                    OwnerId = e.OwnerId
-
+                                    OwnerId = e.OwnerId,
+                                    StoreId = e.StoreId
                                 }
                         );
 

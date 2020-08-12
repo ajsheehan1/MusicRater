@@ -27,11 +27,6 @@ namespace MusicRater.Data
         [ForeignKey(nameof(AlbumId))]
         public virtual Album Album { get; set;  }
 
-        public string AlbumName { get; set; }
-
-        public string ArtistName { get; set; }
-
-
         [Required]
         public Guid OwnerId { get; set; }
       

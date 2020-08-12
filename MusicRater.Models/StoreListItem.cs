@@ -13,6 +13,6 @@ namespace MusicRater.Models
 
         public string Address { get; set;  }
 
-        public decimal Rating { get; set; }
+        public decimal StoreRating { get; set; }
     }
 }

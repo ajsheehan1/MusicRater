@@ -26,7 +26,7 @@ namespace MusicRater.Services
                     StoreId = model.StoreId,
                     StoreName = model.StoreName,
                     Address = model.Address,
-                    Rating  =model.Rating
+                    StoreRating  =model.StoreRating
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -51,7 +51,7 @@ namespace MusicRater.Services
                                     StoreId = e.StoreId,
                                     StoreName = e.StoreName,
                                     Address = e.Address,
-                                    Rating = e.Rating,
+                                    StoreRating = e.StoreRating,
                                 }
                         );
 
@@ -73,7 +73,7 @@ namespace MusicRater.Services
                         StoreId = entity.StoreId,
                         StoreName = entity.StoreName,
                         Address = entity.Address,
-                        Rating = entity.Rating
+                        StoreRating = entity.StoreRating
                     };
             }
         }
@@ -90,7 +90,7 @@ namespace MusicRater.Services
 
                 entity.StoreName = model.StoreName;
                 entity.Address = model.Address;
-                entity.Rating = model.Rating;
+                entity.StoreRating = model.StoreRating;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -20,16 +20,17 @@ namespace MusicRater.Services
         {
         }
 
+        //CREATE
         public bool CreateSong(SongCreate model)
         {
+
+
             var entity =
                 new Song()
                 {
                     OwnerId = _userId,
                     SongName = model.SongName,
-                    Rating = model.Rating,
                     AlbumId = model.AlbumId,
-                    
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -38,6 +39,25 @@ namespace MusicRater.Services
             }
         }
 
+        //Create AlbumName
+        //This method assigns the album name upon creation of Song.WORKING
+        //public string AlbumName(SongCreate model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var newSong =
+        //            ctx
+        //                .Albums
+        //                .Single(e => e.AlbumId == model.AlbumId && e.OwnerId == _userId);
+
+        //        string albumName = newSong.AlbumName;
+        //        return albumName;
+        //    }
+
+        //}
+
+
+        //GET
         public IEnumerable<SongListItem> GetSongs()
         {
             using (var ctx = new ApplicationDbContext())
@@ -45,23 +65,24 @@ namespace MusicRater.Services
                 var query =
                     ctx
                         .Songs
-                        //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new SongListItem
                                 {
                                     SongId = e.SongId,
                                     SongName = e.SongName,
+                                    AlbumName = e.Album.AlbumName,
+                                    ArtistName = e.Album.Artist.ArtistName,
+                                    //AlbumName = GetAlbumName(e.AlbumId).ToString(),
                                     Rating = e.Rating,
                                     AlbumId = e.AlbumId,
-                                    // Add Album/Artist foreign key here
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-
+        //GetbyID
         public SongDetail GetSongById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -70,7 +91,7 @@ namespace MusicRater.Services
                     ctx
                         .Songs
                         .Single(e => e.SongId == id);
-                        
+
                 return
                     new SongDetail
                     {
@@ -78,13 +99,76 @@ namespace MusicRater.Services
                         SongName = entity.SongName,
                         Rating = entity.Rating,
                         AlbumId = entity.AlbumId,
-                        CulumativeRating = entity.CulumativeRating,
+                        AlbumName = entity.Album.AlbumName,
+                        ArtistName = entity.Album.Artist.ArtistName,
+                        //AlbumName = ListAlbumName(entity.AlbumId),
+                        //CulumativeRating = entity.CulumativeRating,
                         NumberOfRatings = entity.NumberOfRatings
-                        
+
                     };
             }
         }
 
+
+        //GetByAlbumID
+        public IEnumerable<SongDetail> GetSongsByAlbum(int AlbumId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.AlbumId == AlbumId)
+                        .Select(
+                            e =>
+                                new SongDetail
+                                {
+                                    SongId = e.SongId,
+                                    SongName = e.SongName,
+                                    Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
+                                    AlbumName = e.Album.AlbumName,
+                                    ArtistName = e.Album.Artist.ArtistName,
+
+
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+
+        //GetByArtistId
+        public IEnumerable<SongDetail> GetSongsByArtist(int ArtistId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.Album.Artist.ArtistId == ArtistId)
+                        .Select(
+                            e =>
+                                new SongDetail
+                                {
+                                    SongId = e.SongId,
+                                    SongName = e.SongName,
+                                    Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
+                                    AlbumName = e.Album.AlbumName,
+                                    ArtistName = e.Album.Artist.ArtistName,
+
+
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+
+        //UPDATE
         public bool UpdateSong(SongEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -92,37 +176,20 @@ namespace MusicRater.Services
                 var entity =
                     ctx
                         .Songs
-                        
-                        .Single(e => e.SongId == model.SongId && e.OwnerId == _userId);
+                        .Single(e => e.SongId == model.SongId);
                 entity.SongName = model.SongName;
                 entity.Rating = model.Rating;
                 entity.CulumativeRating = model.CulumativeRating;
                 entity.NumberOfRatings = model.NumberOfRatings;
                 entity.AlbumId= model.AlbumId;
-                
-
+                //entity.AlbumName = AlbumNameUpdate(model);
                 return ctx.SaveChanges() == 1;
 
             }
         }
 
-        public bool UpdateRatingAverage(SongEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Songs
-                        .Single(e => e.SongId == model.SongId);
-                entity.Rating = model.Rating;
-                entity.CulumativeRating = model.CulumativeRating;
-                entity.NumberOfRatings = model.NumberOfRatings;
-              
-                return ctx.SaveChanges() == 1;
-
-            } //Update the rating only 
-        }
-
+        
+        //DELETE
         public bool DeleteSong(int songId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -137,5 +204,10 @@ namespace MusicRater.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
+        
+ 
+
     }
 }

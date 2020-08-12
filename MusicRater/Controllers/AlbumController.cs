@@ -45,7 +45,17 @@ namespace MusicRater.Controllers
             AlbumService albumService = CreateAlbumService();
             var note = albumService.GetAlbumById(id);
             return Ok(note);
+        } // Get by ID
+
+
+        public IHttpActionResult GetByArtist(int ArtistId)
+        {
+            AlbumService albumService = CreateAlbumService();
+            var note = albumService.GetAlbumByArtist(ArtistId);
+            return Ok(note);
         }
+
+
         public IHttpActionResult Put(AlbumEdit album)
         {
             if (!ModelState.IsValid)

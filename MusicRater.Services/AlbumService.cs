@@ -84,8 +84,8 @@ namespace MusicRater.Services
         }
 
 
-        //GetByArtistId
-        public IEnumerable<AlbumDetails> GetSongsByArtist(int ArtistId)
+        //GetByAlbumId
+        public IEnumerable<AlbumDetails> GetAlbumByArtist(int ArtistId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -124,27 +124,29 @@ namespace MusicRater.Services
 
                 entity.AlbumName = model.AlbumName;
                 entity.Rating = model.Rating;
+                entity.CulumativeRating = model.CulumativeRating;
+                entity.NumberOfRatings = model.NumberOfRatings;
                 entity.ArtistId = model.ArtistId;
 
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool UpdateRatingAverage(AlbumEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Albums
-                        .Single(e => e.AlbumId == model.AlbumId);
-                entity.Rating = model.Rating;
-                entity.CulumativeRating = model.CulumativeRating;
-                entity.NumberOfRatings = model.NumberOfRatings;
+        //public bool UpdateRatingAverage(AlbumEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Albums
+        //                .Single(e => e.AlbumId == model.AlbumId);
+        //        entity.Rating = model.Rating;
+        //        entity.CulumativeRating = model.CulumativeRating;
+        //        entity.NumberOfRatings = model.NumberOfRatings;
 
-                return ctx.SaveChanges() == 1;
+        //        return ctx.SaveChanges() == 1;
 
-            } //Update the rating only 
-        }
+        //    } //Update the rating only 
+        //}
         public bool DeleteAlbum(int albumId)
         {
             using (var ctx = new ApplicationDbContext())

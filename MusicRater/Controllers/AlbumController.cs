@@ -51,7 +51,7 @@ namespace MusicRater.Controllers
         public IHttpActionResult GetByArtist(int ArtistId)
         {
             AlbumService albumService = CreateAlbumService();
-            var note = albumService.GetSongsByArtist(ArtistId);
+            var note = albumService.GetAlbumByArtist(ArtistId);
             return Ok(note);
         }
 

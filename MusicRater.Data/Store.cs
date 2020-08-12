@@ -16,7 +16,7 @@ namespace MusicRater.Data
         [Required]
         public string StoreName { get; set; }
         public string Address { get; set; }
-        public decimal Rating { get; set; }
+        
         public Guid OwnerId { get; set; }
 
         //[Required]
@@ -27,7 +27,10 @@ namespace MusicRater.Data
         {
             this.Albums = new HashSet<Album>();
         }
-
+      
+        public decimal StoreRating { get; set; }
+        public decimal CulumativeRating { get; set; }
+        public int NumberOfRatings { get; set; }
     }
 }
 

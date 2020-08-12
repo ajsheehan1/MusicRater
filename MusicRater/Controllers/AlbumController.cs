@@ -13,14 +13,30 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
+
         private AlbumService CreateAlbumService()
+
+        /// <summary>
+        /// Returns a list of all Albums
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var AlbumService = new AlbumService(userId);
             return AlbumService;
         }
 
+
         // Create a new Album from the contents of the body
+
+        /// <summary>
+        /// Creates a new Album
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
+        //public IHttpActionResult Get(int)
+
         public IHttpActionResult Post(AlbumCreate album)
         {
             if (!ModelState.IsValid)
@@ -51,12 +67,13 @@ namespace MusicRater.Controllers
             return Ok(albums);
         }
 
-        public IHttpActionResult Get(int id)
-        {
-            AlbumService albumService = CreateAlbumService();
-            var albums = albumService.GetAlbumById(id);
-            return Ok(albums);
-        }
+
+        //public IHttpActionResult Get(int id)
+        //{
+          //  AlbumService albumService = CreateAlbumService();
+            //var albums = albumService.GetAlbumById(id);
+            //return Ok(albums);
+        //}
 
         public IHttpActionResult Get(int albumId, bool getStores)
         {
@@ -65,6 +82,35 @@ namespace MusicRater.Controllers
             return Ok(stores);
         }
 
+        /// <summary>
+        /// Returns an Album by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IHttpActionResult Get(int id)
+        {
+            AlbumService albumService = CreateAlbumService();
+            var note = albumService.GetAlbumById(id);
+            return Ok(note);
+        } // Get by ID
+
+        /// <summary>
+        /// Returns an Artist by Id
+        /// </summary>
+        /// <param name="ArtistId"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetByArtist(int ArtistId)
+        {
+            AlbumService albumService = CreateAlbumService();
+            var note = albumService.GetAlbumByArtist(ArtistId);
+            return Ok(note);
+        }
+
+        /// <summary>
+        /// Updates an Album
+        /// </summary>
+        /// <param name="album"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(AlbumEdit album)
         {
             if (!ModelState.IsValid)
@@ -77,6 +123,11 @@ namespace MusicRater.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Deletes an Album by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateAlbumService();

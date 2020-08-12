@@ -52,6 +52,10 @@ namespace MusicRater.Controllers
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
+        /// <summary>
+        /// Returns user info from Identity Framework
+        /// </summary>
+        /// <returns></returns>
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -67,6 +71,10 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/Logout
+        /// <summary>
+        /// Creates an Account Logout
+        /// </summary>
+        /// <returns></returns>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -75,6 +83,12 @@ namespace MusicRater.Controllers
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Returns info regarding account info and State
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -115,6 +129,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/ChangePassword
+        /// <summary>
+        /// Creates a new password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -135,6 +154,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/SetPassword
+        /// <summary>
+        /// Creates a password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -154,6 +178,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// Logs an external login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -192,6 +221,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Removes a login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -221,6 +255,12 @@ namespace MusicRater.Controllers
         }
 
         // GET api/Account/ExternalLogin
+        /// <summary>
+        /// Returns an External login
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -278,6 +318,12 @@ namespace MusicRater.Controllers
         }
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Returns all external logins
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -319,6 +365,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/Register
+        /// <summary>
+        /// Registers a new account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -341,6 +392,11 @@ namespace MusicRater.Controllers
         }
 
         // POST api/Account/RegisterExternal
+        /// <summary>
+        /// Registers a new external account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

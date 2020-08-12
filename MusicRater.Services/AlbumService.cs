@@ -81,6 +81,7 @@ namespace MusicRater.Services
                             {
                                 AlbumId = e.AlbumId,
                                 AlbumName = e.AlbumName,
+                                ArtistName = e.Artist.ArtistName,
                                 Rating = e.Rating,
                                 ArtistId = e.ArtistId
                                     //CreatedUtc = e.CreatedUtc
@@ -103,6 +104,7 @@ namespace MusicRater.Services
                     {
                         AlbumId = entity.AlbumId,
                         AlbumName = entity.AlbumName,
+                        ArtistName = entity.Artist.ArtistName,
                         //CreatedUtc = entity.CreatedUtc,
                         Rating = entity.Rating,
                         ArtistId = entity.ArtistId
@@ -128,6 +130,37 @@ namespace MusicRater.Services
         }
 
         public bool UpdateAlbum(AlbumEdit model)
+
+          //GetByAlbumId
+        public IEnumerable<AlbumDetails> GetAlbumByArtist(int ArtistId)
+
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Albums
+                        .Where(e => e.Artist.ArtistId == ArtistId)
+                        .Select(
+                            e =>
+                                new AlbumDetails
+                                {
+                                    
+                                    Rating = e.Rating,
+                                    AlbumId = e.AlbumId,
+                                    AlbumName = e.AlbumName,
+                                    ArtistName = e.Artist.ArtistName,
+
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+
+
+        public bool UpdateAlbum(AlbumEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -139,27 +172,29 @@ namespace MusicRater.Services
 
                 entity.AlbumName = model.AlbumName;
                 entity.Rating = model.Rating;
+                entity.CulumativeRating = model.CulumativeRating;
+                entity.NumberOfRatings = model.NumberOfRatings;
                 entity.ArtistId = model.ArtistId;
 
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool UpdateRatingAverage(AlbumEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Albums
-                        .Single(e => e.AlbumId == model.AlbumId);
-                entity.Rating = model.Rating;
-                entity.CulumativeRating = model.CulumativeRating;
-                entity.NumberOfRatings = model.NumberOfRatings;
+        //public bool UpdateRatingAverage(AlbumEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Albums
+        //                .Single(e => e.AlbumId == model.AlbumId);
+        //        entity.Rating = model.Rating;
+        //        entity.CulumativeRating = model.CulumativeRating;
+        //        entity.NumberOfRatings = model.NumberOfRatings;
 
-                return ctx.SaveChanges() == 1;
+        //        return ctx.SaveChanges() == 1;
 
-            } //Update the rating only 
-        }
+        //    } //Update the rating only 
+        //}
         public bool DeleteAlbum(int albumId)
         {
             using (var ctx = new ApplicationDbContext())

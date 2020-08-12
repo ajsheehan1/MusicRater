@@ -16,5 +16,7 @@ namespace MusicRater.Models
         public virtual Song Song { get; set; }
 
         public decimal SongIndividualRating { get; set; }
+
+      
     }
 }

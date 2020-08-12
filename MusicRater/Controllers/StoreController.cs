@@ -21,6 +21,10 @@ namespace MusicRater.Controllers
             return storeService;
         }
 
+        /// <summary>
+        /// Returns a list of all Stores
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             StoreService storeService = CreateStoreService();
@@ -28,12 +32,19 @@ namespace MusicRater.Controllers
             return Ok(stores);
         }
 
+
         public IHttpActionResult Get(int storeId, bool getAlbums)
         {
             StoreService storeService = CreateStoreService();
             var albums = storeService.GetAllAlbumsWithStore(storeId, getAlbums);
             return Ok(albums);
         }
+
+        /// <summary>
+        /// Creates a new Store
+        /// </summary>
+        /// <param name="store"></param>
+        /// <returns></returns>
 
         public IHttpActionResult Post(StoreCreate store)
         {
@@ -48,7 +59,11 @@ namespace MusicRater.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// Returns a single store by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             StoreService storeService = CreateStoreService();
@@ -56,6 +71,11 @@ namespace MusicRater.Controllers
             return Ok(store);
         }
 
+        /// <summary>
+        /// Updates info for a  Store
+        /// </summary>
+        /// <param name="store"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(StoreEdit store)
         {
             if (!ModelState.IsValid)
@@ -69,6 +89,11 @@ namespace MusicRater.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Deletes a single Store by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateStoreService();

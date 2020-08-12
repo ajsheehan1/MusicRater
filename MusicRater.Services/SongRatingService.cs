@@ -25,51 +25,39 @@ namespace MusicRater.Services
                 {
                     OwnerId = _userId,
                     SongId = model.SongId,
-                    SongIndividualRating = model.SongIndividualRating
+                    SongIndividualRating = model.SongIndividualRating,
+                    Song = model.Song
                 };
-
-            // retrieve the Song record to which the Rating refers
-            var updateSongRating = new SongService();
-            SongDetail songDetail = updateSongRating.GetSongById(model.SongId);
-
-            // Format an object of type SongEdit 
-            // > increase the Cumulative Rating by this SongIndividualRating
-            // > increase the Number of Ratings by 1 (for this rating)
-            // > assign the new average rating to the SongRating field
-            SongEdit songUpdate = new SongEdit();
-
-            songUpdate.SongId = songDetail.SongId;
-            songUpdate.SongName = songDetail.SongName;
-
-            songUpdate.CulumativeRating = songDetail.CulumativeRating + model.SongIndividualRating;
-            songUpdate.NumberOfRatings = songDetail.NumberOfRatings + 1;
-            decimal newCumulativeRating = songUpdate.CulumativeRating;
-            int newNumberOfRatings = songUpdate.NumberOfRatings;
-            songUpdate.Rating = newCumulativeRating / newNumberOfRatings;
-
-            // update the Song which is represented in this new SongRating
-            bool updated = updateSongRating.UpdateRatingAverage(songUpdate);
-
-
-        //songDetail.CulumativeRating += model.SongIndividualRating;
-        //songDetail.NumberRatings += 1;
-
-            // Call CalculateSongAvgRating with the current model
-            // inside the method, calcuate the average of all Ratings for the Song in the model
-            // return an object of type SongEdit - to retain the song name and ID, and it will have the average Rating in the Rating field
-            //SongEdit songWithAvgRating = CalculateSongAvgRating(model);
-
-            //bool SongRatingUpdated = UpdateRatingInSong(songWithAvgRating);
-
-
+            // Add the new SongRating to the table
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.SongRatings.Add(entity);
+                bool addedSongRating = ctx.SaveChanges() == 1;
+                if (!addedSongRating)
+                {
+                    return false;
+                }
+
+            }
+
+            // Update the Song record 
+            using (var ctx = new ApplicationDbContext())
+            {
+                // retrieve the SongRating record we just posted so we can follow the foreign key to the Song record
+                var newSongRating =
+                    ctx
+                        .SongRatings
+                        .Single(e => e.SongRatingId == entity.SongRatingId && e.OwnerId == _userId);
+
+                // Update the fields in the Song record at the other end of the foreign key
+                newSongRating.Song.CulumativeRating += model.SongIndividualRating;
+                newSongRating.Song.NumberOfRatings += 1;
+
+                newSongRating.Song.Rating = newSongRating.Song.CulumativeRating / newSongRating.Song.NumberOfRatings;
+
                 return ctx.SaveChanges() == 1;
             }
         } // CreateSongRating
-
-
         public IEnumerable<SongRatingListItem> GetSongRatings()
         {
             using (var ctx = new ApplicationDbContext())
@@ -86,12 +74,12 @@ namespace MusicRater.Services
                                     SongId = e.SongId,
                                     SongIndividualRating = e.SongIndividualRating,
                                     OwnerId = e.OwnerId
-    }
+                                }
                         );
 
                 return query.ToArray();
             }
-        } // GetSongRatings
+        } // GetArtistRatings
 
         public IEnumerable<SongRatingBySong> GetRatingsBySong(int id)
         {
@@ -106,6 +94,7 @@ namespace MusicRater.Services
                                 new SongRatingBySong
                                 {
                                     SongRatingId = e.SongRatingId,
+                                    SongId = e.SongId,
                                     SongIndividualRating = e.SongIndividualRating,
                                     OwnerId = e.OwnerId
 
@@ -124,7 +113,7 @@ namespace MusicRater.Services
                     ctx
                         .SongRatings
                         .Single(e => e.SongRatingId == id);
-                //.Single(e => e.SongRatingId == id && e.OwnerId == _userId);
+                //.Single(e => e.ArtistRatingId == id && e.OwnerId == _userId);
                 return
                     new SongRatingEdit
                     {
@@ -134,9 +123,7 @@ namespace MusicRater.Services
                     };
             }
 
-        } // GetSongRatingById
-
-
+        } // GetsongRatingById
 
         public bool UpdateSongRating(SongRatingEdit model)
         {
@@ -146,62 +133,44 @@ namespace MusicRater.Services
                     ctx
                         .SongRatings
                         .Single(e => e.SongRatingId == model.SongRatingId && e.OwnerId == _userId);
-               
+
+                
+                entity.Song.CulumativeRating = entity.Song.CulumativeRating - entity.SongIndividualRating;
+                entity.Song.CulumativeRating = model.SongIndividualRating + entity.Song.CulumativeRating;
+                entity.Song.Rating = entity.Song.CulumativeRating / entity.Song.NumberOfRatings;
 
                 entity.SongId = model.SongId;
                 entity.SongIndividualRating = model.SongIndividualRating;
 
                 return ctx.SaveChanges() == 1;
             }
-        } // UpdateSongRating
+        } // UpdateArtistRating
 
         public bool DeleteSongRating(int songRatingId)
         {
-            // since we're just passing in the id of the SongRating to be deleted,
-            // we need to get the SongRating record so we know what amount to deduct from the 
-            // CumulativeRating in the Song record
-            // retrieve the Song record to which the Rating refers
-            // Get SongRatingId, SongId, and SongIndividualRating
-            SongRatingEdit songRatingToDeduct = GetSongRatingById(songRatingId);
-
-            // retrieve the Song record to which the Rating refers
-            var updateSongRating = new SongService();
-            SongDetail songDetail = updateSongRating.GetSongById(songRatingToDeduct.SongId);
-
-            // Format an object of type SongEdit 
-            // > increase the Cumulative Rating by this SongIndividualRating
-            // > increase the Number of Ratings by 1 (for this rating)
-            // > assign the new average rating to the SongRating field
-            SongEdit songUpdate = new SongEdit();
-
-            songUpdate.SongId = songDetail.SongId;
-            songUpdate.SongName = songDetail.SongName;
-
-            songUpdate.CulumativeRating = songDetail.CulumativeRating - songRatingToDeduct.SongIndividualRating;
-            songUpdate.NumberOfRatings = songDetail.NumberOfRatings - 1;
-            decimal newCumulativeRating = songUpdate.CulumativeRating;
-            int newNumberOfRatings = songUpdate.NumberOfRatings;
-            songUpdate.Rating = newCumulativeRating / newNumberOfRatings;
-
-            // update the Song which is represented in this new SongRating
-            bool updated = updateSongRating.UpdateRatingAverage(songUpdate);
-
-
-
-
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .SongRatings
                         .Single(e => e.SongRatingId == songRatingId && e.OwnerId == _userId);
+                
+                entity.Song.CulumativeRating -= entity.SongIndividualRating;
+                entity.Song.NumberOfRatings -= 1;
+
+                if (entity.Song.NumberOfRatings == 0)
+                {
+                    entity.Song.Rating = 0;
+                }
+                else
+                {
+                    entity.Song.Rating = entity.Song.CulumativeRating / entity.Song.NumberOfRatings;
+                }
 
                 ctx.SongRatings.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 2;
             }
 
-        } // DeleteSongRating
-
+        } // DeleteArtistRating
     }
 }

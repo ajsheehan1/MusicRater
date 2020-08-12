@@ -25,7 +25,7 @@ namespace MusicRater.Services
                     OwnerId = _userId,
                     StoreId = model.StoreId,
                     StoreName = model.StoreName,
-                    Rating  =model.Rating
+                    Rating  = model.Rating
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -72,6 +72,34 @@ namespace MusicRater.Services
                         Address = entity.Address,
                         Rating = entity.Rating
                     };
+            }
+        }
+
+        public List<AlbumDetails> GetAllAlbumsWithStore(int storeId, bool getAlbums)
+        {
+            if (getAlbums)
+            {
+                // You're in the right place
+            }
+            using (var ctx = new ApplicationDbContext())
+            {
+                var store =
+                    ctx
+                        .Stores
+                        .Single(e => e.StoreId == storeId);
+                List<AlbumDetails> albumList = new List<AlbumDetails>();
+                var albums = store.Albums.ToArray();
+                foreach (var album in albums)
+                {
+                    AlbumDetails listItem = new AlbumDetails();
+                    listItem.AlbumId = album.AlbumId;
+                    listItem.AlbumName = album.AlbumName;
+                    listItem.ArtistName = album.Artist.ArtistName;
+                    listItem.Rating = album.Rating;
+
+                    albumList.Add(listItem);
+                }
+                return albumList;
             }
         }
 

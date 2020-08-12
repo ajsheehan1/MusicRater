@@ -16,5 +16,7 @@ namespace MusicRater.Models
         [Required]
         public string Address { get; set; }
         public decimal Rating { get; set; }
+        //public int AlbumId { get; set; }
+
     }
 }

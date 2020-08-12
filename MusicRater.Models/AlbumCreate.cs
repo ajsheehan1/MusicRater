@@ -11,13 +11,13 @@ namespace MusicRater.Models
     {
         [Required]
         [MinLength(1,ErrorMessage ="Please enter at least 1 character")]
-        [MaxLength(20, ErrorMessage = "There are too many characters in this field")]
+        [MaxLength(40, ErrorMessage = "There are too many characters in this field")]
         public string AlbumName { get; set; }
 
         //[MaxLength(800)] 
         public decimal Rating { get; set; } 
         public int ArtistId { get; set; }
 
-
+        //public int StoreId { get; set; }
     }
 }

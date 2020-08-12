@@ -29,12 +29,41 @@ namespace MusicRater.Services
                     AlbumName = model.AlbumName,
                     Rating = model.Rating,
                     ArtistId = model.ArtistId,
+                    //StoreId = model.StoreId
                     //CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Albums.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public List<StoreDetail> GetAllStoresWithAlbum(int albumId, bool getStores)
+        {
+            if (getStores)
+            {
+                // You're in the right place
+            }
+            using (var ctx = new ApplicationDbContext())
+            {
+                var album =
+                    ctx
+                        .Albums
+                        .Single(e => e.AlbumId == albumId);
+                List<StoreDetail> storeList = new List<StoreDetail>();
+                var stores = album.Stores.ToArray();
+                foreach(var store in stores)
+                {
+                    StoreDetail listItem = new StoreDetail();
+                    listItem.StoreId = store.StoreId;
+                    listItem.StoreName = store.StoreName;
+                    listItem.Address = store.Address;
+                    listItem.Rating = store.Rating;
+
+                    storeList.Add(listItem);
+                }
+                return storeList;
             }
         }
 
@@ -78,6 +107,23 @@ namespace MusicRater.Services
                         Rating = entity.Rating,
                         ArtistId = entity.ArtistId
                     };
+            }
+        }
+
+        // Specify a store and an album. Add the Store into the Album's ICollection of Stores
+        // The join table will be updated with the indices from both tables
+        public void AlbumAssignAStore(int storeId, int albumId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var album = ctx
+                    .Albums
+                    .Single(e => e.AlbumId == albumId);
+                var store = ctx
+                    .Stores
+                    .Single(e => e.StoreId == storeId);
+                store.Albums.Add(album);
+                ctx.SaveChanges();
             }
         }
 

@@ -21,6 +21,45 @@ namespace MusicRater.Data
         }
     }
 
+    //########### ONLY USING ApplicationDbContext; NOT AlbumDbContext
+    //public class AlbumDbContext : IdentityDbContext
+    //{
+    //    public AlbumDbContext() : base("AlbumDbDefault")
+    //    {
+    //    }
+
+    //    public DbSet<Album> Albums { get; set; }
+    //    public DbSet<Store> Stores { get; set; }
+
+    //    //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    //{
+    //    //    base.OnModelCreating(modelBuilder);
+    //    //}
+
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+
+    //        modelBuilder.Entity<Album>()
+    //                    .HasMany<Store>(s => s.Stores)
+    //                    .WithMany(c => c.Albums)
+    //                    .Map(cs =>
+    //                    {
+    //                        cs.MapLeftKey("AlbumRefId");
+    //                        cs.MapRightKey("StoreRefId");
+    //                        cs.ToTable("AlbumInStore");
+    //                    });
+    //        modelBuilder
+    //            .Conventions
+    //            .Remove<PluralizingTableNameConvention>();
+
+    //        modelBuilder
+    //            .Configurations
+    //            .Add(new IdentityUserLoginConfiguration())
+    //            .Add(new IdentityUserRoleConfiguration());
+
+    //    }
+    //}
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -45,6 +84,17 @@ namespace MusicRater.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Added the following modelBuilder for many2many with Store and Album
+            modelBuilder.Entity<Album>()
+            .HasMany<Store>(s => s.Stores)
+            .WithMany(c => c.Albums)
+            .Map(cs =>
+            {
+                cs.MapLeftKey("AlbumRefId");
+                cs.MapRightKey("StoreRefId");
+                cs.ToTable("AlbumInStore");
+            });
+
             modelBuilder
             .Conventions
             .Remove<PluralizingTableNameConvention>();

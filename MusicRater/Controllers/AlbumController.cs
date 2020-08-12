@@ -13,14 +13,14 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
-
-        public IHttpActionResult Get()
+        private AlbumService CreateAlbumService()
         {
-            AlbumService albumService = CreateAlbumService();
-            var albums = albumService.GetAlbums();
-            return Ok(albums);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var AlbumService = new AlbumService(userId);
+            return AlbumService;
         }
-        //public IHttpActionResult Get(int)
+
+        // Create a new Album from the contents of the body
         public IHttpActionResult Post(AlbumCreate album)
         {
             if (!ModelState.IsValid)
@@ -34,18 +34,37 @@ namespace MusicRater.Controllers
             return Ok();
         }
 
-        private AlbumService CreateAlbumService()
+        // Assign Album albumId to Store storeId - arguments in the Uri
+        public IHttpActionResult Post(int storeId, int albumId)
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var AlbumService = new AlbumService(userId);
-            return AlbumService;
+            var service = CreateAlbumService();
+
+            service.AlbumAssignAStore(storeId, albumId);
+
+            return Ok();
         }
+
+        public IHttpActionResult Get()
+        {
+            AlbumService albumService = CreateAlbumService();
+            var albums = albumService.GetAlbums();
+            return Ok(albums);
+        }
+
         public IHttpActionResult Get(int id)
         {
             AlbumService albumService = CreateAlbumService();
-            var note = albumService.GetAlbumById(id);
-            return Ok(note);
+            var albums = albumService.GetAlbumById(id);
+            return Ok(albums);
         }
+
+        public IHttpActionResult Get(int albumId, bool getStores)
+        {
+            AlbumService albumService = CreateAlbumService();
+            var stores = albumService.GetAllStoresWithAlbum(albumId, getStores);
+            return Ok(stores);
+        }
+
         public IHttpActionResult Put(AlbumEdit album)
         {
             if (!ModelState.IsValid)

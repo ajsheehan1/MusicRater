@@ -32,7 +32,12 @@ namespace MusicRater.Controllers
             return Ok(stores);
         }
 
-
+        /// <summary>
+        /// Returns a list of Albums in the Store
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="getAlbums"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int storeId, bool getAlbums)
         {
             StoreService storeService = CreateStoreService();

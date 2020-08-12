@@ -23,7 +23,7 @@ namespace MusicRater.Controllers
             return Ok(artistRatings);
         } // Get
         /// <summary>
-        /// REturns a Rating of a single Artist by Id
+        /// Returns a Rating of a single Artist by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

@@ -14,13 +14,21 @@ namespace MusicRater.Controllers
     [Authorize]
     public class SongController : ApiController
     {
+        /// <summary>
+        /// Returns a list of all Songs
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             SongService songService = CreateSongService();
             var songs = songService.GetSongs();
             return Ok(songs);
         }
-
+        /// <summary>
+        /// Creates a new Song
+        /// </summary>
+        /// <param name="song"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(SongCreate song)
         {
             if (!ModelState.IsValid)
@@ -39,14 +47,22 @@ namespace MusicRater.Controllers
             var songService = new SongService(userId);
             return songService;
         }
-
+        /// <summary>
+        /// Returns a single Song by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             SongService songService = CreateSongService();
             var note = songService.GetSongById(id);
             return Ok(note);
         }
-
+        /// <summary>
+        /// Returns Songs on an Album
+        /// </summary>
+        /// <param name="AlbumId"></param>
+        /// <returns></returns>
         public IHttpActionResult GetByAlbum(int AlbumId)
         {
             SongService songService = CreateSongService();
@@ -54,7 +70,11 @@ namespace MusicRater.Controllers
             return Ok(note);
         }
 
-
+        /// <summary>
+        /// Returns Songs by an Artist
+        /// </summary>
+        /// <param name="ArtistId"></param>
+        /// <returns></returns>
         public IHttpActionResult GetByArtist(int ArtistId)
         {
             SongService songService = CreateSongService();
@@ -62,7 +82,11 @@ namespace MusicRater.Controllers
             return Ok(note);
         }
 
-
+        /// <summary>
+        /// Updates a Song
+        /// </summary>
+        /// <param name="song"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(SongEdit song)
         {
             if (!ModelState.IsValid)
@@ -75,6 +99,11 @@ namespace MusicRater.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Deletes a Song by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateSongService();

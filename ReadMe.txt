@@ -10,6 +10,8 @@ Table of Contents:
 	D) Store - Table 7 & 8
 3. Future Features
 4. Local Instructions
+5. Links to requirements 
+
 
 ********************************************************************************************
 ---------------------------------------1. Concept-------------------------------------------
@@ -283,3 +285,13 @@ URL for ratings table: https://localhost:*****/api/[Category]Rating
 
 	Delete: DELETE
 	Required: StoreRatingId, GetByID URL (see above)	
+
+
+********************************************************************************************
+--------------------------------------4. Links -------------------------------------------
+
+********************************************************************************************
+
+
+Trello Board: https://trello.com/earthboundseven
+

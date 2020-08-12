@@ -12,20 +12,32 @@ namespace MusicRater.Controllers
 {
     public class SongRatingController : ApiController
     {
+        /// <summary>
+        /// Returns the Rating of all Songs
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             SongRatingService songRatingService = CreateSongRatingService();
             var songRatings = songRatingService.GetSongRatings();
             return Ok(songRatings);
         } // Get
-
+        /// <summary>
+        /// Returns the Rating of a single Song by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             SongRatingService songRatingService = CreateSongRatingService();
             var songRatings = songRatingService.GetRatingsBySong(id);
             return Ok(songRatings);
         } // Get by ID
-
+        /// <summary>
+        /// Adds a Song Rating
+        /// </summary>
+        /// <param name="songRating"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(SongRatingCreate songRating)
         {
             if (!ModelState.IsValid)
@@ -38,14 +50,21 @@ namespace MusicRater.Controllers
 
             return Ok();
         } // Post
-
+        /// <summary>
+        /// Creates a Song Rating
+        /// </summary>
+        /// <returns></returns>
         private SongRatingService CreateSongRatingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var songRatingService = new SongRatingService(userId);
             return songRatingService;
         } // CreateSongRatingService
-
+        /// <summary>
+        /// Edits a Song Rating
+        /// </summary>
+        /// <param name="songRating"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(SongRatingEdit songRating)
         {
             if (!ModelState.IsValid)
@@ -58,6 +77,11 @@ namespace MusicRater.Controllers
 
             return Ok();
         } // Put
+        /// <summary>
+        /// Deletes a Song Rating by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateSongRatingService();

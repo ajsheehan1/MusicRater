@@ -13,13 +13,23 @@ namespace MusicRater.Controllers
     public class StoreRatingController : ApiController
     {
         // GET: StoreRating
+        /// <summary>
+        /// Returns the Rating of All Stores
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             StoreRatingService StoreRatingService = CreateStoreRatingService();
             var storeRatings = StoreRatingService.GetStoreRatings();
             return Ok(storeRatings);
-        } // Get
-
+        }
+        
+        // Get
+        /// <summary>
+        /// Returns the Rating of a single Store by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             StoreRatingService StoreRatingService = CreateStoreRatingService();
@@ -27,6 +37,11 @@ namespace MusicRater.Controllers
             return Ok(storeRatings);
         } // Get by ID
 
+        /// <summary>
+        /// Adds a Store Rating
+        /// </summary>
+        /// <param name="storeRating"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(StoreRatingCreate storeRating)
         {
             if (!ModelState.IsValid)
@@ -40,6 +55,10 @@ namespace MusicRater.Controllers
             return Ok();
         } // Post
 
+        /// <summary>
+        /// Creates a Store Rating
+        /// </summary>
+        /// <returns></returns>
         private StoreRatingService CreateStoreRatingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -47,6 +66,11 @@ namespace MusicRater.Controllers
             return StoreRatingService;
         } // CreateStoreRatingService
 
+        /// <summary>
+        /// Edits a Store Rating
+        /// </summary>
+        /// <param name="storeRating"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(StoreRatingEdit storeRating)
         {
             if (!ModelState.IsValid)
@@ -59,6 +83,11 @@ namespace MusicRater.Controllers
 
             return Ok();
         } // Put
+        /// <summary>
+        /// Deletes a Store Rating by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateStoreRatingService();

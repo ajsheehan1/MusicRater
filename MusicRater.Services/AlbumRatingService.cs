@@ -96,8 +96,8 @@ namespace MusicRater.Services
                                 {
                                     AlbumRatingId = e.AlbumRatingId,
                                     AlbumIndividualRating = e.AlbumIndividualRating,
-                                    OwnerId = e.OwnerId
-
+                                    OwnerId = e.OwnerId,
+                                    AlbumId = e.AlbumId,
                                 }
                         );
 
@@ -136,6 +136,10 @@ namespace MusicRater.Services
                         .AlbumRatings
                         .Single(e => e.AlbumRatingId == model.AlbumRatingId && e.OwnerId == _userId);
 
+
+                entity.Album.CulumativeRating = entity.Album.CulumativeRating - entity.AlbumIndividualRating;
+                entity.Album.CulumativeRating = model.AlbumIndividualRating + entity.Album.CulumativeRating;
+                entity.Album.Rating = entity.Album.CulumativeRating / entity.Album.NumberOfRatings;
 
                 entity.AlbumId = model.AlbumId;
                 entity.AlbumIndividualRating = model.AlbumIndividualRating;

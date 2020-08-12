@@ -139,6 +139,11 @@ namespace MusicRater.Services
                         .ArtistRatings
                         .Single(e => e.ArtistRatingId == model.ArtistRatingId && e.OwnerId == _userId);
 
+
+                entity.Artist.CulumativeRating = entity.Artist.CulumativeRating - entity.ArtistIndividualRating;
+                entity.Artist.CulumativeRating = model.ArtistIndividualRating + entity.Artist.CulumativeRating;
+                entity.Artist.ArtistRating = entity.Artist.CulumativeRating / entity.Artist.NumberOfRatings;
+
                 entity.ArtistId = model.ArtistId;
                 entity.ArtistIndividualRating = model.ArtistIndividualRating;
 

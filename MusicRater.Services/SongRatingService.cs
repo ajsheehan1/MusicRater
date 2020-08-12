@@ -134,10 +134,13 @@ namespace MusicRater.Services
                         .SongRatings
                         .Single(e => e.SongRatingId == model.SongRatingId && e.OwnerId == _userId);
 
-                entity.SongId = model.SongId;
+                
                 entity.Song.CulumativeRating = entity.Song.CulumativeRating - entity.SongIndividualRating;
                 entity.Song.CulumativeRating = model.SongIndividualRating + entity.Song.CulumativeRating;
                 entity.Song.Rating = entity.Song.CulumativeRating / entity.Song.NumberOfRatings;
+
+                entity.SongId = model.SongId;
+                entity.SongIndividualRating = model.SongIndividualRating;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -54,6 +54,12 @@ namespace MusicRater.Controllers
         }
 
         // Assign Album albumId to Store storeId - arguments in the Uri
+        /// <summary>
+        /// Adds an association between an Album & Store
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="albumId"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(int storeId, int albumId)
         {
             var service = CreateAlbumService();
@@ -62,7 +68,10 @@ namespace MusicRater.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Returns a list of Albums
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             AlbumService albumService = CreateAlbumService();
@@ -70,7 +79,12 @@ namespace MusicRater.Controllers
             return Ok(albums);
         }
 
-
+        /// <summary>
+        /// Returns a list of Stores that has an Album
+        /// </summary>
+        /// <param name="albumId"></param>
+        /// <param name="getStores"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int albumId, bool getStores)
         {
             AlbumService albumService = CreateAlbumService();

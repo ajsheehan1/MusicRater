@@ -646,6 +646,21 @@
             <param name="album"></param>
             <returns></returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:MusicRater.Controllers.AlbumController.Post(System.Int32,System.Int32)" -->
+        <member name="M:MusicRater.Controllers.AlbumController.Get">
+            <summary>
+            Returns a list of Albums
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicRater.Controllers.AlbumController.Get(System.Int32,System.Boolean)">
+            <summary>
+            Returns a list of Stores that has an Album
+            </summary>
+            <param name="albumId"></param>
+            <param name="getStores"></param>
+            <returns></returns>
+        </member>
         <member name="M:MusicRater.Controllers.AlbumController.Get(System.Int32)">
             <summary>
             Returns an Album by Id
@@ -722,7 +737,7 @@
         </member>
         <member name="M:MusicRater.Controllers.ArtistRatingController.Get(System.Int32)">
             <summary>
-            REturns a Rating of a single Artist by Id
+            Returns a Rating of a single Artist by Id
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -758,6 +773,14 @@
             <summary>
             Returns a list of all Stores
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicRater.Controllers.StoreController.Get(System.Int32,System.Boolean)">
+            <summary>
+            Returns a list of Albums in the Store
+            </summary>
+            <param name="storeId"></param>
+            <param name="getAlbums"></param>
             <returns></returns>
         </member>
         <member name="M:MusicRater.Controllers.StoreController.Post(MusicRater.Models.StoreCreate)">

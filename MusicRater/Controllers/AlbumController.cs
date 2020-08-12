@@ -13,22 +13,30 @@ namespace MusicRater.Controllers
     [Authorize]
     public class AlbumController : ApiController
     {
+
+        private AlbumService CreateAlbumService()
+
         /// <summary>
         /// Returns a list of all Albums
         /// </summary>
         /// <returns></returns>
         public IHttpActionResult Get()
         {
-            AlbumService albumService = CreateAlbumService();
-            var albums = albumService.GetAlbums();
-            return Ok(albums);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var AlbumService = new AlbumService(userId);
+            return AlbumService;
         }
+
+
+        // Create a new Album from the contents of the body
+
         /// <summary>
         /// Creates a new Album
         /// </summary>
         /// <param name="album"></param>
         /// <returns></returns>
         //public IHttpActionResult Get(int)
+
         public IHttpActionResult Post(AlbumCreate album)
         {
             if (!ModelState.IsValid)
@@ -42,12 +50,38 @@ namespace MusicRater.Controllers
             return Ok();
         }
 
-        private AlbumService CreateAlbumService()
+        // Assign Album albumId to Store storeId - arguments in the Uri
+        public IHttpActionResult Post(int storeId, int albumId)
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var AlbumService = new AlbumService(userId);
-            return AlbumService;
+            var service = CreateAlbumService();
+
+            service.AlbumAssignAStore(storeId, albumId);
+
+            return Ok();
         }
+
+        public IHttpActionResult Get()
+        {
+            AlbumService albumService = CreateAlbumService();
+            var albums = albumService.GetAlbums();
+            return Ok(albums);
+        }
+
+
+        //public IHttpActionResult Get(int id)
+        //{
+          //  AlbumService albumService = CreateAlbumService();
+            //var albums = albumService.GetAlbumById(id);
+            //return Ok(albums);
+        //}
+
+        public IHttpActionResult Get(int albumId, bool getStores)
+        {
+            AlbumService albumService = CreateAlbumService();
+            var stores = albumService.GetAllStoresWithAlbum(albumId, getStores);
+            return Ok(stores);
+        }
+
         /// <summary>
         /// Returns an Album by Id
         /// </summary>

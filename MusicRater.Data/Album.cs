@@ -29,6 +29,15 @@ namespace MusicRater.Data
         [ForeignKey(nameof(ArtistId))]
         public virtual Artist Artist { get; set; }
 
+        //[Required]
+        //public int StoreId { get; set; }
+        //[ForeignKey(nameof(StoreId))]
+        public virtual ICollection<Store> Stores { get; set; }
+        public Album()
+        {
+            this.Stores = new HashSet<Store>();
+        }
+
 
     }
 }

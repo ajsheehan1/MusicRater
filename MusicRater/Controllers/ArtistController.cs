@@ -11,6 +11,13 @@ namespace MusicRater.Controllers
     [System.Web.Http.Authorize]
     public class ArtistController : ApiController
     {
+        private ArtistService CreateArtistService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var artistService = new ArtistService(userId);
+            return artistService;
+        } // CreateArtistService
+
         /// <summary>
         /// Returns a list of all Artist
         /// </summary>
@@ -49,6 +56,21 @@ namespace MusicRater.Controllers
 
             return Ok();
         } // Post
+
+        public IHttpActionResult Get()
+        {
+            ArtistService artistService = CreateArtistService();
+            var artists = artistService.GetArtists();
+            return Ok(artists);
+        } // Get
+
+        public IHttpActionResult Get(int id)
+        {
+            ArtistService artistService = CreateArtistService();
+            var artists = artistService.GetArtistById(id);
+            return Ok(artists);
+        } // Get by ID
+
         /// <summary>
         /// Returns a single Artist by Id
         /// </summary>

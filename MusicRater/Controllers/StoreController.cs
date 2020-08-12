@@ -32,11 +32,20 @@ namespace MusicRater.Controllers
             return Ok(stores);
         }
 
+
+        public IHttpActionResult Get(int storeId, bool getAlbums)
+        {
+            StoreService storeService = CreateStoreService();
+            var albums = storeService.GetAllAlbumsWithStore(storeId, getAlbums);
+            return Ok(albums);
+        }
+
         /// <summary>
         /// Creates a new Store
         /// </summary>
         /// <param name="store"></param>
         /// <returns></returns>
+
         public IHttpActionResult Post(StoreCreate store)
         {
             if (!ModelState.IsValid)

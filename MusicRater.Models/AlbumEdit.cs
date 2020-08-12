@@ -16,6 +16,7 @@ namespace MusicRater.Models
         public string ArtistName { get; set; }
         public decimal CulumativeRating { get; set; }
         public int NumberOfRatings { get; set; }
+        public int StoreId { get; set; }
 
     }
 }

@@ -619,12 +619,6 @@
             <param name="artist"></param>
             <returns></returns>
         </member>
-        <member name="M:MusicRater.Controllers.ArtistController.CreateArtistService">
-            <summary>
-            Returns a single Artist by Id
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:MusicRater.Controllers.ArtistController.Put(MusicRater.Models.ArtistEdit)">
             <summary>
             Updates info for an Artist
@@ -639,7 +633,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MusicRater.Controllers.AlbumController.Get">
+        <member name="M:MusicRater.Controllers.AlbumController.CreateAlbumService">
             <summary>
             Returns a list of all Albums
             </summary>

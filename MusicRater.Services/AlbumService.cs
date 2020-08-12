@@ -59,7 +59,7 @@ namespace MusicRater.Services
                     listItem.StoreId = store.StoreId;
                     listItem.StoreName = store.StoreName;
                     listItem.Address = store.Address;
-                    listItem.Rating = store.Rating;
+                    listItem.StoreRating = store.StoreRating;
 
                     storeList.Add(listItem);
                 }
@@ -129,7 +129,7 @@ namespace MusicRater.Services
             }
         }
 
-        public bool UpdateAlbum(AlbumEdit model)
+    
 
           //GetByAlbumId
         public IEnumerable<AlbumDetails> GetAlbumByArtist(int ArtistId)

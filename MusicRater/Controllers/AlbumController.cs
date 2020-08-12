@@ -14,13 +14,16 @@ namespace MusicRater.Controllers
     public class AlbumController : ApiController
     {
 
-        private AlbumService CreateAlbumService()
+        
 
         /// <summary>
         /// Returns a list of all Albums
         /// </summary>
         /// <returns></returns>
-        public IHttpActionResult Get()
+
+        
+        private AlbumService CreateAlbumService()
+
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var AlbumService = new AlbumService(userId);
@@ -67,13 +70,6 @@ namespace MusicRater.Controllers
             return Ok(albums);
         }
 
-
-        //public IHttpActionResult Get(int id)
-        //{
-          //  AlbumService albumService = CreateAlbumService();
-            //var albums = albumService.GetAlbumById(id);
-            //return Ok(albums);
-        //}
 
         public IHttpActionResult Get(int albumId, bool getStores)
         {

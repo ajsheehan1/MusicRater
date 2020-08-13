@@ -103,7 +103,7 @@ namespace MusicRater.Services
                         ArtistName = entity.Album.Artist.ArtistName,
                         //AlbumName = ListAlbumName(entity.AlbumId),
                         //CulumativeRating = entity.CulumativeRating,
-                        NumberOfRatings = entity.NumberOfRatings
+                        //NumberOfRatings = entity.NumberOfRatings
 
                     };
             }

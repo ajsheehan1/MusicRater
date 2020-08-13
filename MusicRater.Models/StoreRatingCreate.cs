@@ -12,6 +12,8 @@ namespace MusicRater.Models
     public class StoreRatingCreate
     {
         public int StoreId { get; set; }
+
+        [Range(0.0, 5.0, ErrorMessage = "Please provide a rating between 0.0 and 5.0")]
         public decimal StoreIndividualRating { get; set; }
 
         [ForeignKey(nameof(StoreId))]

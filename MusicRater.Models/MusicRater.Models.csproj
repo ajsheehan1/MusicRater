@@ -72,11 +72,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumRatingByAlbum.cs" />
+    <Compile Include="AlbumRatingCreate.cs" />
+    <Compile Include="AlbumRatingEdit.cs" />
+    <Compile Include="AlbumRatingListItem.cs" />
+    <Compile Include="ArtistCreate.cs" />
+    <Compile Include="ArtistDetail.cs" />
+    <Compile Include="ArtistEdit.cs" />
+    <Compile Include="ArtistListItem.cs" />
+    <Compile Include="AlbumDetails.cs" />
+    <Compile Include="AlbumEdit.cs" />
+    <Compile Include="ArtistRatingByArtist.cs" />
+    <Compile Include="ArtistRatingCreate.cs" />
+    <Compile Include="ArtistRatingEdit.cs" />
+    <Compile Include="ArtistRatingListItem.cs" />
+    <Compile Include="ListAlbums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongDetail.cs" />
+    <Compile Include="SongEdit.cs" />
+    <Compile Include="SongRatingBySong.cs" />
+    <Compile Include="SongRatingCreate.cs" />
+    <Compile Include="SongRatingEdit.cs" />
+    <Compile Include="SongRatingListItem.cs" />
+    <Compile Include="StoreCreate.cs" />
+    <Compile Include="StoreDetail.cs" />
+    <Compile Include="StoreEdit.cs" />
+    <Compile Include="StoreListItem.cs" />
+    <Compile Include="SongCreate.cs" />
+    <Compile Include="SongListItem.cs" />
+    <Compile Include="AlbumCreate.cs" />
+    <Compile Include="StoreRatingByStore.cs" />
+    <Compile Include="StoreRatingCreate.cs" />
+    <Compile Include="StoreRatingEdit.cs" />
+    <Compile Include="StoreRatingListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicRater.Data\MusicRater.Data.csproj">
+      <Project>{0F4EC8AE-DBE1-416A-878C-A137E0733353}</Project>
+      <Name>MusicRater.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

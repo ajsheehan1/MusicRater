@@ -7,13 +7,13 @@ namespace MusicRater.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class mergeupdate : IMigrationMetadata
+    public sealed partial class ResetTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mergeupdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ResetTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008121430416_mergeupdate"; }
+            get { return "202008130224223_ResetTables"; }
         }
         
         string IMigrationMetadata.Source

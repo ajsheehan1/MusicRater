@@ -150,7 +150,7 @@ namespace MusicRater.Services
                                     AlbumId = e.AlbumId,
                                     AlbumName = e.AlbumName,
                                     ArtistName = e.Artist.ArtistName,
-
+                                    ArtistId = e.ArtistId, 
                                 }
                         );
 

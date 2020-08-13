@@ -89,25 +89,9 @@
     <Compile Include="Artist.cs" />
     <Compile Include="ArtistRating.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202008112147530_postmergemigration.cs" />
-    <Compile Include="Migrations\202008112147530_postmergemigration.Designer.cs">
-      <DependentUpon>202008112147530_postmergemigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008121338087_fixedStoreRating.cs" />
-    <Compile Include="Migrations\202008121338087_fixedStoreRating.Designer.cs">
-      <DependentUpon>202008121338087_fixedStoreRating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008121352228_songtablefix.cs" />
-    <Compile Include="Migrations\202008121352228_songtablefix.Designer.cs">
-      <DependentUpon>202008121352228_songtablefix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008121430416_mergeupdate.cs" />
-    <Compile Include="Migrations\202008121430416_mergeupdate.Designer.cs">
-      <DependentUpon>202008121430416_mergeupdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008121805563_PostMerge.cs" />
-    <Compile Include="Migrations\202008121805563_PostMerge.Designer.cs">
-      <DependentUpon>202008121805563_PostMerge.cs</DependentUpon>
+    <Compile Include="Migrations\202008130224223_ResetTables.cs" />
+    <Compile Include="Migrations\202008130224223_ResetTables.Designer.cs">
+      <DependentUpon>202008130224223_ResetTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,20 +105,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008112147530_postmergemigration.resx">
-      <DependentUpon>202008112147530_postmergemigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008121338087_fixedStoreRating.resx">
-      <DependentUpon>202008121338087_fixedStoreRating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008121352228_songtablefix.resx">
-      <DependentUpon>202008121352228_songtablefix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008121430416_mergeupdate.resx">
-      <DependentUpon>202008121430416_mergeupdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008121805563_PostMerge.resx">
-      <DependentUpon>202008121805563_PostMerge.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008130224223_ResetTables.resx">
+      <DependentUpon>202008130224223_ResetTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

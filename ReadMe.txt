@@ -91,9 +91,10 @@ Table 4 Store Rating (Subset of Store):
 ********************************************************************************************
 
 Some of the features we would like to add in the future:
-- Store: Album Catalogue. Allow the user to view a list of albums in the store
-- Front End UI
-- Sort by: Artist, Top Ratings, etc. 
+- Front End UI fully built
+- Sort by: Artist, Top Ratings, etc.
+- Disply an album w/ Songs 
+
 
 ********************************************************************************************
 -----------------------------------4. Local Instructions------------------------------------
@@ -175,14 +176,18 @@ URL for ratings table: https://localhost:*****/api/[Category]Rating
 
 	Read: GET
 	Required: Nothing
-	Displayed: List of: AlbumId, AlbumName, AlbumRating, (optional) ArtistId
+	Displayed: List of: AlbumId, AlbumName, AlbumRating, ArtistId
 
 	Read: GetByID
 	Required: AlbumID, GetByID URL (see above)
-	DisplayeD: AlbumId, AlbumName, AlbumRating, (optional) ArtistId
+	DisplayeD: AlbumId, AlbumName, AlbumRating, ArtistId
+
+	Read: GetByArtist
+	Required: (Input under params) - ArtistId
+	Displayed: List Of: Album Id, AlbumName, Rating, ArtistId, ArtistName
 
 	Update: PUT
-	Required: AlbumId, AlbumName, (optional) ArtistId
+	Required: AlbumId, AlbumName, ArtistId
 
 	Delete: DELETE
 	Required: AblumId, GetByID URL (see above)
@@ -212,17 +217,24 @@ URL for ratings table: https://localhost:*****/api/[Category]Rating
 	Required: SongName
 	Optional: AlbumId(foreignkey)
 
-
 	Read: GET
 	Required: Nothing
-	Displayed: List of: SongId, SongName, SongRating, (optional) AlbumId
+	Displayed: List of: SongId, SongName, SongRating, AlbumId
 
 	Read: GetByID
 	Required: SongId, GetByID URL (see above)
-	DisplayeD: SongId, SongName, SongRating, (optional) AlbumId
+	DisplayeD: SongId, SongName, SongRating, AlbumId
+
+	Read: GetByArtist
+	Required: (Input under params) - ArtistId
+	Displayed: List Of: Song Id, Album Id, Song Name, Rating, Album Name, ArtistName
+
+	Read: GetByAlbum
+	Required: (Input under params) - AlbumId
+	Displayed: List Of: Song Id, Album Id, Song Name, Rating, Album Name, ArtistName
 
 	Update: PUT
-	Required: SongId, SongName, (optional) AlbumId
+	Required: SongId, SongName, AlbumId
 
 	Delete: DELETE
 	Required: SongId, GetByID URL (see above)
@@ -255,14 +267,14 @@ URL for ratings table: https://localhost:*****/api/[Category]Rating
 
 	Read: GET
 	Required: Nothing
-	Displayed: List of: StoreId, StoreName, SongRating, (optional) AlbumId, Address
+	Displayed: List of: StoreId, StoreName, SongRating, Address
 
 	Read: GetByID
 	Required: StoreId, GetByID URL (see above)
-	DisplayeD: StoreId, StoreName, StoreRating, (optional) AlbumId
+	DisplayeD: StoreId, StoreName, StoreRating, Address
 
 	Update: PUT
-	Required: StoreId, StoreName, (optional) AlbumId
+	Required: StoreId, StoreName, Address
 
 	Delete: DELETE
 	Required: StoreId, GetByID URL (see above)
@@ -284,14 +296,30 @@ URL for ratings table: https://localhost:*****/api/[Category]Rating
 	Required: StoreRatingId, StoreIndividualRating, StoreId
 
 	Delete: DELETE
-	Required: StoreRatingId, GetByID URL (see above)	
+	Required: StoreRatingId, GetByID URL (see above)
 
 
 ********************************************************************************************
---------------------------------------4. Links -------------------------------------------
+--------------5. Albums in Stores / Stores that have an Album Relationship -----------------
+
+********************************************************************************************
+Our final stretch goal was to create a many to many relationship between Albums and Stores. The goal was for the user to be able to enter an AlbumId and pull a list of Stores where the album may be "available." Conversally, the user can select a store and view the Albums within the given store. 
+
+
+Instructions: 
+	GET All Albums in a Store: 
+		Required: Params: storeId, getalbums (set to true)
+		Displayed: List of: AlbumId, AlbumName, Rating, ArtistId, ArtistName
+
+	GET All Stores that have a selected Album:
+		Required: Params: albumId, getstores (set to true)
+		Displayed: StoreId, StoreNam, Address, StoreRating
+
+********************************************************************************************
+--------------------------------------6. Links -------------------------------------------
 
 ********************************************************************************************
 
 
-Trello Board: https://trello.com/earthboundseven
+All Resources can be found on our Trello Board: https://trello.com/earthboundseven
 

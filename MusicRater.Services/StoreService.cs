@@ -99,6 +99,7 @@ namespace MusicRater.Services
                     listItem.AlbumName = album.AlbumName;
                     listItem.ArtistName = album.Artist.ArtistName;
                     listItem.Rating = album.Rating;
+                    listItem.ArtistId = album.ArtistId;
 
                     albumList.Add(listItem);
                 }

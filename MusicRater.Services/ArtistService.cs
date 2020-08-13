@@ -54,7 +54,7 @@ namespace MusicRater.Services
                                     ArtistId = e.ArtistId,
                                     ArtistName = e.ArtistName,
                                     ArtistRating = e.ArtistRating,
-                                    OwnerId = e.OwnerId
+                                    //OwnerId = e.OwnerId
                                 }
                         );
 
@@ -77,8 +77,8 @@ namespace MusicRater.Services
                         ArtistId = entity.ArtistId,
                         ArtistName = entity.ArtistName,
                         ArtistRating = entity.ArtistRating,
-                        CulumativeRating = entity.CulumativeRating,
-                        NumberOfRatings = entity.NumberOfRatings
+                        //CulumativeRating = entity.CulumativeRating,
+                        //NumberOfRatings = entity.NumberOfRatings
                     };
             }
 
